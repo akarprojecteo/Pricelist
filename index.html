@@ -102,6 +102,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 .sec-title em{font-style:italic;color:var(--g);}
 .sec-sub{font-size:13px;color:var(--gray);margin-top:6px;line-height:1.65;}
 
+/* RESPONSIVE TABLE WRAPPER */
+.price-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 24px;
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+}
+
 /* SERVICE CATEGORY HEADER */
 .cat-header{
   display:flex;align-items:center;gap:14px;
@@ -120,19 +131,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 .cat-badge.alt{background:var(--c2);color:var(--gray);}
 
 /* PRICE TABLE */
-.price-table{width:100%;border-collapse:collapse;margin-bottom:6px;}
-.price-table thead tr{border-bottom:1.5px solid var(--border);}
+.price-table{width:100%;border-collapse:collapse;}
+.price-table thead tr{border-bottom:1.5px solid var(--border); background: rgba(246,243,236,.5);}
 .price-table th{
   text-align:left;font-size:10px;text-transform:uppercase;
   letter-spacing:2px;color:var(--gl);font-weight:500;
-  padding:8px 12px;
+  padding:12px 14px;
 }
 .price-table th.right{text-align:right;}
 .price-table tbody tr{border-bottom:0.5px solid var(--border);transition:background .15s;}
 .price-table tbody tr:hover{background:rgba(29,158,117,.04);}
 .price-table tbody tr:last-child{border-bottom:none;}
-.price-table td{padding:12px 12px;font-size:13px;color:var(--ink);vertical-align:top;}
-.price-table td.name{font-weight:500;}
+.price-table td{padding:14px 14px;font-size:13px;color:var(--ink);vertical-align:top;}
+.price-table td.name{font-weight:500;color:var(--gd);}
 .price-table td.desc{font-size:12px;color:var(--gray);line-height:1.55;}
 .price-table td.price{text-align:right;font-weight:600;color:var(--gd);white-space:nowrap;}
 .price-table td.note{font-size:11px;color:var(--g);}
@@ -180,7 +191,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 
 /* POLICY GRID */
 .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
-@media(max-width:600px){.policy-grid{grid-template-columns:1fr;}.pkg-grid{grid-template-columns:1fr;}}
 .policy-card{
   background:var(--white);border:0.5px solid var(--border);
   border-radius:12px;padding:1.25rem;
@@ -223,11 +233,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 }
 .cb-action.secondary:hover{background:rgba(255,255,255,.05);}
 
-/* PRINT */
-@media print{
-  .sticky-nav,.contact-bar button{display:none;}
-  .sec{display:block!important;}
-  .cover{page-break-after:always;}
+/* ═══ ENGINE UI-UX-PRO-MAX RESONSIVE MOBILE GRID SYSTEM ═══ */
+@media(max-width:650px){
+  .cover { padding: 40px 24px; }
+  .cv-top { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .cv-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cv-bottom .cb-contact { text-align: left; }
+  
+  .sticky-nav { padding: 0 16px; flex-direction: column; height: auto; padding-top: 12px; padding-bottom: 12px; gap: 10px; align-items: center; }
+  .nav-tabs { width: 100%; overflow-x: auto; display: flex; justify-content: flex-start; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .ntab { flex-shrink: 0; font-size: 11px; padding: 4px 10px; }
+  
+  .main { padding: 32px 16px; }
+  .price-table { min-width: 580px; } /* Mencegah tabel gepeng di seluler */
+  
+  .policy-grid, .pkg-grid { grid-template-columns: 1fr; }
+  
+  .contact-bar { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .cb-group { width: 100%; }
+  .cb-action { width: 100%; text-align: center; }
 }
 </style>
 </head>
@@ -258,7 +282,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
     <div class="cb-left">Berlaku: 2026 · Tarif bersubsidi khusus pelajar aktif</div>
     <div class="cb-contact">
       <div class="cbc-label">Hubungi Kami</div>
-      <div class="cbc-val">@akarproject.eo · WA: 087886984984</div>
+      <div class="cbc-val">@akarproject.eo · WA: 087886984983</div>
     </div>
   </div>
 </div>
@@ -283,7 +307,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="sec-header">
     <div class="sec-eyebrow">Daftar Harga Pelajar</div>
     <h2 class="sec-title">Semua <em>Layanan</em> & Harga</h2>
-    <p class="sec-sub">Harga bersifat estimasi awal yang disesuaikan dengan budget siswa/mahasiswa. Harga final dikonfirmasi setelah briefing kebutuhan selesai.</p>
+    <p class="sec-sub">Harga bersifat Playfair awal yang disesuaikan dengan budget siswa/mahasiswa. Harga final dikonfirmasi setelah briefing kebutuhan selesai.</p>
   </div>
 
   <!-- KATEGORI 1: AKADEMIK -->
@@ -295,60 +319,62 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
     <div class="cat-badge">⭐ Prioritas</div>
   </div>
 
-  <table class="price-table">
-    <thead>
-      <tr>
-        <th style="width:28%">Layanan</th>
-        <th style="width:34%">Deskripsi</th>
-        <th style="width:18%">Termasuk</th>
-        <th class="right" style="width:20%">Harga</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="name">Makalah Standar</td>
-        <td class="desc">Makalah tugas kuliah/sekolah, 8–15 halaman. Terstruktur, referensi valid, bebas plagiarisme.</td>
-        <td class="note">1x revisi<span class="tag-incl">Daftar pustaka</span></td>
-        <td class="price">Rp 30.000–50.000</td>
-      </tr>
-      <tr>
-        <td class="name">Makalah Panjang / Ilmiah</td>
-        <td class="desc">Makalah 15–30 halaman, metodologi lebih ketat, bisa dengan abstrak dan daftar isi.</td>
-        <td class="note">2x revisi<span class="tag-incl">Abstrak</span></td>
-        <td class="price">Rp 55.000–95.000</td>
-      </tr>
-      <tr>
-        <td class="name">KTI (Karya Tulis Ilmiah)</td>
-        <td class="desc">KTI lomba atau kelas, termasuk latar belakang, rumusan masalah, metodologi, dan penutup.</td>
-        <td class="note">2x revisi</td>
-        <td class="price">Rp 75.000–135.000</td>
-      </tr>
-      <tr>
-        <td class="name">Rangkuman Materi</td>
-        <td class="desc">Rangkuman rapi dari buku/modul/PPT, disusun per bab, mudah dipelajari ulang.</td>
-        <td class="note">Format PDF/Word</td>
-        <td class="price">Rp 15.000–30.000</td>
-      </tr>
-      <tr>
-        <td class="name">Latihan Soal + Pembahasan</td>
-        <td class="desc">Soal latihan per mata pelajaran/topik, dilengkapi pembahasan dan kunci jawaban.</td>
-        <td class="note">10–25 soal</td>
-        <td class="price">Rp 20.000–35.000</td>
-      </tr>
-      <tr>
-        <td class="name">Mentoring / Bimbel Online</td>
-        <td class="desc">Sesi 1:1 atau kelompok via Google Meet/WA, untuk persiapan ujian atau materi kuliah awal.</td>
-        <td class="note">60–90 menit</td>
-        <td class="price">Rp 25.000–45.000 / sesi</td>
-      </tr>
-      <tr>
-        <td class="name">Bantu Tugas Harian</td>
-        <td class="desc">Tugas ringan harian seperti soal esai ringkas, pengerjaan PR, atau jawaban pertanyaan analisis pendek.</td>
-        <td class="note">Estimasi per tugas</td>
-        <td class="price">Rp 10.000–20.000</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="price-table-wrapper">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Layanan</th>
+          <th style="width:34%">Deskripsi</th>
+          <th style="width:18%">Termasuk</th>
+          <th class="right" style="width:20%">Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Makalah Standar</td>
+          <td class="desc">Makalah tugas kuliah/sekolah, 8–15 halaman. Terstruktur, referensi valid, bebas plagiarisme.</td>
+          <td class="note">1x revisi<span class="tag-incl">Daftar pustaka</span></td>
+          <td class="price">Rp 30.000–50.000</td>
+        </tr>
+        <tr>
+          <td class="name">Makalah Panjang / Ilmiah</td>
+          <td class="desc">Makalah 15–30 halaman, metodologi lebih ketat, bisa dengan abstrak dan daftar isi.</td>
+          <td class="note">2x revisi<span class="tag-incl">Abstrak</span></td>
+          <td class="price">Rp 55.000–95.000</td>
+        </tr>
+        <tr>
+          <td class="name">KTI (Karya Tulis Ilmiah)</td>
+          <td class="desc">KTI lomba atau kelas, termasuk latar belakang, rumusan masalah, metodologi, dan penutup.</td>
+          <td class="note">2x revisi</td>
+          <td class="price">Rp 75.000–135.000</td>
+        </tr>
+        <tr>
+          <td class="name">Rangkuman Materi</td>
+          <td class="desc">Rangkuman rapi dari buku/modul/PPT, disusun per bab, mudah dipelajari ulang.</td>
+          <td class="note">Format PDF/Word</td>
+          <td class="price">Rp 15.000–30.000</td>
+        </tr>
+        <tr>
+          <td class="name">Latihan Soal + Pembahasan</td>
+          <td class="desc">Soal latihan per mata pelajaran/topik, dilengkapi pembahasan dan kunci jawaban.</td>
+          <td class="note">10–25 soal</td>
+          <td class="price">Rp 20.000–35.000</td>
+        </tr>
+        <tr>
+          <td class="name">Mentoring / Bimbel Online</td>
+          <td class="desc">Sesi 1:1 atau kelompok via Google Meet/WA, untuk persiapan ujian atau materi kuliah awal.</td>
+          <td class="note">60–90 menit</td>
+          <td class="price">Rp 25.000–45.000 / sesi</td>
+        </tr>
+        <tr>
+          <td class="name">Bantu Tugas Harian</td>
+          <td class="desc">Tugas ringan harian seperti soal esai ringkas, pengerjaan PR, atau jawaban pertanyaan analisis pendek.</td>
+          <td class="note">Estimasi per tugas</td>
+          <td class="price">Rp 10.000–20.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="divider"></div>
 
@@ -359,66 +385,68 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
     <div class="cat-badge">⭐ Prioritas</div>
   </div>
 
-  <table class="price-table">
-    <thead>
-      <tr>
-        <th style="width:28%">Layanan</th>
-        <th style="width:34%">Deskripsi</th>
-        <th style="width:18%">Termasuk</th>
-        <th class="right" style="width:20%">Harga</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="name">Desain Poster / Flyer</td>
-        <td class="desc">Poster acara sekolah, infografis tugas, atau publikasi komunitas. Format resolusi tinggi.</td>
-        <td class="note">1x revisi<span class="tag-incl">File PNG</span></td>
-        <td class="price">Rp 20.000–40.000</td>
-      </tr>
-      <tr>
-        <td class="name">Desain Feed Instagram (3 post)</td>
-        <td class="desc">Paket 3 post feed Instagram kepanitiaan atau komersial, satu tema visual konsisten.</td>
-        <td class="note">File PNG + Canva link</td>
-        <td class="price">Rp 50.000–85.000</td>
-      </tr>
-      <tr>
-        <td class="name">Template Medsos (5 template)</td>
-        <td class="desc">5 layout template medsos siap pakai dan dapat diedit ulang untuk feeds kepengurusan organisasi.</td>
-        <td class="note">Editable di Canva</td>
-        <td class="price">Rp 65.000–110.000</td>
-      </tr>
-      <tr>
-        <td class="name">Edit Video Reels / TikTok</td>
-        <td class="desc">Edit video pendek kreatif durasi 15–60 detik menggunakan CapCut. Dinamis dan pakai tren musik terbaru.</td>
-        <td class="note">1x revisi</td>
-        <td class="price">Rp 25.000–45.000</td>
-      </tr>
-      <tr>
-        <td class="name">Edit Video Pendek (1–5 menit)</td>
-        <td class="desc">Video dokumentasi proker organisasi, konten presentasi tugas kelompok, atau promosi event.</td>
-        <td class="note">1x revisi<span class="tag-incl">Teks + musik</span></td>
-        <td class="price">Rp 45.000–85.000</td>
-      </tr>
-      <tr>
-        <td class="name">Mockup Produk</td>
-        <td class="desc">Penyusunan mockup stiker visual, kemasan, atau desain kaos kepanitiaan di atas media digital.</td>
-        <td class="note">3–5 variasi angle</td>
-        <td class="price">Rp 30.000–55.000</td>
-      </tr>
-      <tr>
-        <td class="name">Kelola Medsos (per bulan)</td>
-        <td class="desc">Manajemen postingan feeds + caption strategis dan riset hashtag khusus untuk akun komunitas/proker.</td>
-        <td class="note">8–12 post/bulan</td>
-        <td class="price">Rp 120.000–220.000 /bln</td>
-      </tr>
-      <tr>
-        <td class="name">Digital Drawing / Ilustrasi</td>
-        <td class="desc">Ilustrasi digital atau pembuatan aset elemen visual kasual untuk maskot event kepanitiaan.</td>
-        <td class="note">1 karakter/elemen</td>
-        <td class="price">Rp 40.000–90.000</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="price-table-wrapper">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Layanan</th>
+          <th style="width:34%">Deskripsi</th>
+          <th style="width:18%">Termasuk</th>
+          <th class="right" style="width:20%">Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Desain Poster / Flyer</td>
+          <td class="desc">Poster acara sekolah, infografis tugas, atau publikasi komunitas. Format resolusi tinggi.</td>
+          <td class="note">1x revisi<span class="tag-incl">File PNG</span></td>
+          <td class="price">Rp 20.000–40.000</td>
+        </tr>
+        <tr>
+          <td class="name">Desain Feed Instagram (3 post)</td>
+          <td class="desc">Paket 3 post feed Instagram kepanitiaan atau komersial, satu tema visual konsisten.</td>
+          <td class="note">File PNG + Canva link</td>
+          <td class="price">Rp 50.000–85.000</td>
+        </tr>
+        <tr>
+          <td class="name">Template Medsos (5 template)</td>
+          <td class="desc">5 layout template medsos siap pakai dan dapat diedit ulang untuk feeds kepengurusan organisasi.</td>
+          <td class="note">Editable di Canva</td>
+          <td class="price">Rp 65.000–110.000</td>
+        </tr>
+        <tr>
+          <td class="name">Edit Video Reels / TikTok</td>
+          <td class="desc">Edit video pendek kreatif durasi 15–60 detik menggunakan CapCut. Dinamis dan pakai tren musik terbaru.</td>
+          <td class="note">1x revisi</td>
+          <td class="price">Rp 25.000–45.000</td>
+        </tr>
+        <tr>
+          <td class="name">Edit Video Pendek (1–5 menit)</td>
+          <td class="desc">Video dokumentasi proker organisasi, konten presentasi tugas kelompok, atau promosi event.</td>
+          <td class="note">1x revisi<span class="tag-incl">Teks + musik</span></td>
+          <td class="price">Rp 45.000–85.000</td>
+        </tr>
+        <tr>
+          <td class="name">Mockup Produk</td>
+          <td class="desc">Penyusunan mockup stiker visual, kemasan, atau desain kaos kepanitiaan di atas media digital.</td>
+          <td class="note">3–5 variasi angle</td>
+          <td class="price">Rp 30.000–55.000</td>
+        </tr>
+        <tr>
+          <td class="name">Kelola Medsos (per bulan)</td>
+          <td class="desc">Manajemen postingan feeds + caption strategis dan riset hashtag khusus untuk akun komunitas/proker.</td>
+          <td class="note">8–12 post/bulan</td>
+          <td class="price">Rp 120.000–220.000 /bln</td>
+        </tr>
+        <tr>
+          <td class="name">Digital Drawing / Ilustrasi</td>
+          <td class="desc">Ilustrasi digital atau pembuatan aset elemen visual kasual untuk maskot event kepanitiaan.</td>
+          <td class="note">1 karakter/elemen</td>
+          <td class="price">Rp 40.000–90.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="divider"></div>
 
@@ -429,48 +457,50 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
     <div class="cat-badge alt">Pendukung</div>
   </div>
 
-  <table class="price-table">
-    <thead>
-      <tr>
-        <th style="width:28%">Layanan</th>
-        <th style="width:34%">Deskripsi</th>
-        <th style="width:18%">Termasuk</th>
-        <th class="right" style="width:20%">Harga</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="name">Laporan Kegiatan</td>
-        <td class="desc">Penyusunan berkas laporan pertanggungjawaban proker organisasi standar Word / PDF rapi.</td>
-        <td class="note">Format Word/PDF</td>
-        <td class="price">Rp 20.000–40.000</td>
-      </tr>
-      <tr>
-        <td class="name">Proposal Kegiatan</td>
-        <td class="desc">Proposal pencarian dana / perizinan birokrasi kampus komplit dengan latar belakang dan rancangan anggaran.</td>
-        <td class="note">1x revisi</td>
-        <td class="price">Rp 30.000–60.000</td>
-      </tr>
-      <tr>
-        <td class="name">Notulensi Rapat</td>
-        <td class="desc">Transkrip pengetikan rapi poin hasil pembahasan rapat dari bahan voice note atau catatan coretan.</td>
-        <td class="note">Per sesi rapat</td>
-        <td class="price">Rp 10.000–25.000</td>
-      </tr>
-      <tr>
-        <td class="name">Surat Resmi</td>
-        <td class="desc">Kertas kerja surat undangan narasumber, permohonan delegasi, atau peminjaman ruang sarpras resmi.</td>
-        <td class="note">Per surat</td>
-        <td class="price">Rp 10.000–20.000</td>
-      </tr>
-      <tr>
-        <td class="name">Scrapbook Digital</td>
-        <td class="desc">Penyusunan album kenangan wisuda kelulusan atau perpisahan pengurus organisasi interaktif.</td>
-        <td class="note">10–20 halaman</td>
-        <td class="price">Rp 45.000–85.000</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="price-table-wrapper">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Layanan</th>
+          <th style="width:34%">Deskripsi</th>
+          <th style="width:18%">Termasuk</th>
+          <th class="right" style="width:20%">Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Laporan Kegiatan</td>
+          <td class="desc">Penyusunan berkas laporan pertanggungjawaban proker organisasi standar Word / PDF rapi.</td>
+          <td class="note">Format Word/PDF</td>
+          <td class="price">Rp 20.000–40.000</td>
+        </tr>
+        <tr>
+          <td class="name">Proposal Kegiatan</td>
+          <td class="desc">Proposal pencarian dana / perizinan birokrasi kampus komplit dengan latar belakang dan rancangan anggaran.</td>
+          <td class="note">1x revisi</td>
+          <td class="price">Rp 30.000–60.000</td>
+        </tr>
+        <tr>
+          <td class="name">Notulensi Rapat</td>
+          <td class="desc">Transkrip pengetikan rapi poin hasil pembahasan rapat dari bahan voice note atau catatan coretan.</td>
+          <td class="note">Per sesi rapat</td>
+          <td class="price">Rp 10.000–25.000</td>
+        </tr>
+        <tr>
+          <td class="name">Surat Resmi</td>
+          <td class="desc">Kertas kerja surat undangan narasumber, permohonan delegasi, atau peminjaman ruang sarpras resmi.</td>
+          <td class="note">Per surat</td>
+          <td class="price">Rp 10.000–20.000</td>
+        </tr>
+        <tr>
+          <td class="name">Scrapbook Digital</td>
+          <td class="desc">Penyusunan album kenangan wisuda kelulusan atau perpisahan pengurus organisasi interaktif.</td>
+          <td class="note">10–20 halaman</td>
+          <td class="price">Rp 45.000–85.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="divider"></div>
 
@@ -481,36 +511,38 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
     <div class="cat-badge alt">Jangka Menengah</div>
   </div>
 
-  <table class="price-table">
-    <thead>
-      <tr>
-        <th style="width:28%">Layanan</th>
-        <th style="width:34%">Deskripsi</th>
-        <th style="width:18%">Termasuk</th>
-        <th class="right" style="width:20%">Harga</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="name">Konsep Acara</td>
-        <td class="desc">Pemetaan tema kreatif, alur dekorasi, penentuan pilar aktivitas, serta mood board visual event sekolah.</td>
-        <td class="note">Dokumen konsep + moodboard</td>
-        <td class="price">Rp 60.000–110.000</td>
-      </tr>
-      <tr>
-        <td class="name">Rundown Acara</td>
-        <td class="desc">Pembuatan matriks susunan acara detail per menit lengkap beserta kolom pembagian tugas panitia inti.</td>
-        <td class="note">Dokumen Word/PDF</td>
-        <td class="price">Rp 40.000–75.000</td>
-      </tr>
-      <tr>
-        <td class="name">Koordinasi Acara Ringan</td>
-        <td class="desc">Paket perencanaan konsep + rundown struktural + pembuatan 1 poster publikasi utama acara kecil.</td>
-        <td class="note">Konsep + Rundown + Poster</td>
-        <td class="price">Rp 175.000–325.000</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="price-table-wrapper">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Layanan</th>
+          <th style="width:34%">Deskripsi</th>
+          <th style="width:18%">Termasuk</th>
+          <th class="right" style="width:20%">Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Konsep Acara</td>
+          <td class="desc">Pemetaan tema kreatif, alur dekorasi, penentuan pilar aktivitas, serta mood board visual event sekolah.</td>
+          <td class="note">Dokumen konsep + moodboard</td>
+          <td class="price">Rp 60.000–110.000</td>
+        </tr>
+        <tr>
+          <td class="name">Rundown Acara</td>
+          <td class="desc">Pembuatan matriks susunan acara detail per menit lengkap beserta kolom pembagian tugas panitia inti.</td>
+          <td class="note">Dokumen Word/PDF</td>
+          <td class="price">Rp 40.000–75.000</td>
+        </tr>
+        <tr>
+          <td class="name">Koordinasi Acara Ringan</td>
+          <td class="desc">Paket perencanaan konsep + rundown struktural + pembuatan 1 poster publikasi utama acara kecil.</td>
+          <td class="note">Konsep + Rundown + Poster</td>
+          <td class="price">Rp 175.000–325.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="note-box" style="margin-top:24px;">
     <div class="nb-title">Catatan Penting Harga</div>
@@ -627,7 +659,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
       <div class="os-num">1</div>
       <div class="os-body">
         <div class="os-title">Hubungi kami via DM Instagram atau WhatsApp</div>
-        <div class="os-desc">Kirim pesan ke Instagram <span style="color:var(--gd); font-weight:500;">@akarproject.eo</span> atau kontak langsung WhatsApp ke nomor <span style="color:var(--gd); font-weight:500;">087886984984</span>. Infokan jenis tugas/jasa dan batas waktu pengumpulanmu.</div>
+        <div class="os-desc">Kirim pesan ke Instagram <span style="color:var(--gd); font-weight:500;">@akarproject.eo</span> atau kontak langsung WhatsApp ke nomor <span style="color:var(--gd); font-weight:500;">087886984983</span>. Infokan jenis tugas/jasa dan batas waktu pengumpulanmu.</div>
       </div>
     </div>
     <div class="os-item">
@@ -669,7 +701,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
       <div class="os-num">7</div>
       <div class="os-body">
         <div class="os-title">Pelunasan & file final dikirim</div>
-        <div class="os-desc">Setelah hasil draf dinilai oke, lakukan transfer pelunasan sisa 50%. Tim administrasi kami akan langsung mengirimkan dokumen berkas final resolusi penuh tanpa watermark saat itu juga. Selesai! 🌱</div>
+        <div class="os-desc">Setelah kamu puas dengan hasilnya, lakukan transfer pelunasan sisa 50%. Tim administrasi kami akan langsung mengirimkan dokumen berkas final resolusi penuh tanpa watermark saat itu juga. Selesai! 🌱</div>
       </div>
     </div>
   </div>
@@ -736,7 +768,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   </div>
   <div class="cb-group">
     <button class="cb-action secondary" onclick="window.open('https://www.instagram.com/akarproject.eo/','_blank')">Instagram</button>
-    <button class="cb-action" onclick="window.open('https://wa.me/6287886984984','_blank')">WhatsApp Chat →</button>
+    <button class="cb-action" onclick="window.open('https://wa.me/6287886984983','_blank')">WhatsApp Chat →</button>
   </div>
 </div>
 
