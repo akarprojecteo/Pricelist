@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate Card — Akar Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#1D9E75; --gd:#085041; --gm:#0F6E56;
+  --mint:#9FE1CB; --ml:#E1F5EE;
+  --cream:#F6F3EC; --c2:#EDEAE1;
+  --ink:#1A1A18; --gray:#6B6B68; --gl:#B0ADA6;
+  --white:#FFFFFF; --border:#DDD9D0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
+
+/* COVER */
+.cover{
+  background:var(--gd); min-height:100vh;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:56px 60px; position:relative; overflow:hidden;
+  page-break-after:always;
+}
+.cover::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(29,158,117,.22) 0%,transparent 65%);
+  top:-150px;right:-150px;pointer-events:none;
+}
+.cover::after{
+  content:'';position:absolute;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(159,225,203,.1) 0%,transparent 70%);
+  bottom:-60px;left:40px;pointer-events:none;
+}
+.cv-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
+.cv-brand{display:flex;align-items:center;gap:12px;}
+.cv-brand img{height:54px;width:auto;object-fit:contain;}
+.cv-doc-type{
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  border:0.5px solid rgba(255,255,255,.12);
+  padding:6px 16px;border-radius:20px;
+}
+.cv-body{position:relative;z-index:1;}
+.cv-pill{
+  display:inline-block;font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--mint);border:0.5px solid rgba(159,225,203,.35);
+  padding:5px 14px;border-radius:20px;margin-bottom:20px;
+}
+.cv-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,7vw,80px);font-weight:700;color:var(--white);
+  line-height:1.0;margin-bottom:16px;
+}
+.cv-h1 em{font-style:italic;color:var(--mint);}
+.cv-desc{font-size:15px;color:rgba(255,255,255,.5);max-width:460px;line-height:1.75;margin-bottom:40px;}
+.cv-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.cv-chip{
+  font-size:12px;font-weight:500;
+  padding:7px 16px;border-radius:20px;
+  background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);
+  border:0.5px solid rgba(255,255,255,.1);
+}
+.cv-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:0.5px solid rgba(255,255,255,.1);padding-top:20px;
+  position:relative;z-index:1;
+}
+.cv-bottom .cb-left{font-size:12px;color:rgba(255,255,255,.2);letter-spacing:1px;}
+.cv-bottom .cb-contact{text-align:right;}
+.cv-bottom .cb-contact .cbc-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--mint);}
+.cv-bottom .cb-contact .cbc-val{font-size:13px;color:rgba(255,255,255,.6);margin-top:2px;}
+
+/* NAV TABS */
+.sticky-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(246,243,236,.96);backdrop-filter:blur(12px);
+  border-bottom:0.5px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:58px;
+}
+.nav-brand img{height:38px;width:auto;object-fit:contain;display:block;}
+.nav-tabs{display:flex;gap:4px;}
+.ntab{
+  font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;
+  border:0.5px solid transparent;background:transparent;
+  color:var(--gray);cursor:pointer;transition:all .18s;
+}
+.ntab.active{background:var(--g);color:var(--white);border-color:var(--g);}
+.ntab:hover:not(.active){color:var(--ink);border-color:var(--border);}
+
+/* MAIN */
+.main{max-width:920px;margin:0 auto;padding:48px 40px;}
+.sec{display:none;}
+.sec.active{display:block;}
+.sec-header{margin-bottom:32px;}
+.sec-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--g);font-weight:500;margin-bottom:5px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;}
+.sec-title em{font-style:italic;color:var(--g);}
+.sec-sub{font-size:13px;color:var(--gray);margin-top:6px;line-height:1.65;}
+
+/* SERVICE CATEGORY HEADER */
+.cat-header{
+  display:flex;align-items:center;gap:14px;
+  margin:32px 0 16px;
+}
+.cat-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--ml);display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.cat-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;color:var(--ink);}
+.cat-badge{
+  font-size:10px;font-weight:500;padding:3px 10px;border-radius:20px;
+  background:var(--ml);color:var(--gm);letter-spacing:.5px;
+}
+.cat-badge.alt{background:var(--c2);color:var(--gray);}
+
+/* PRICE TABLE */
+.price-table{width:100%;border-collapse:collapse;margin-bottom:6px;}
+.price-table thead tr{border-bottom:1.5px solid var(--border);}
+.price-table th{
+  text-align:left;font-size:10px;text-transform:uppercase;
+  letter-spacing:2px;color:var(--gl);font-weight:500;
+  padding:8px 12px;
+}
+.price-table th.right{text-align:right;}
+.price-table tbody tr{border-bottom:0.5px solid var(--border);transition:background .15s;}
+.price-table tbody tr:hover{background:rgba(29,158,117,.04);}
+.price-table tbody tr:last-child{border-bottom:none;}
+.price-table td{padding:12px 12px;font-size:13px;color:var(--ink);vertical-align:top;}
+.price-table td.name{font-weight:500;}
+.price-table td.desc{font-size:12px;color:var(--gray);line-height:1.55;}
+.price-table td.price{text-align:right;font-weight:600;color:var(--gd);white-space:nowrap;}
+.price-table td.note{font-size:11px;color:var(--g);}
+.tag-incl{
+  display:inline-block;font-size:10px;padding:2px 7px;border-radius:4px;
+  background:var(--ml);color:var(--gm);margin-left:4px;font-weight:500;
+}
+
+/* DIVIDER */
+.divider{height:0.5px;background:var(--border);margin:24px 0;}
+
+/* NOTES BOX */
+.note-box{
+  background:var(--white);border:0.5px solid var(--border);
+  border-radius:12px;padding:1.25rem 1.5rem;margin-top:20px;
+}
+.note-box .nb-title{
+  font-size:11px;text-transform:uppercase;letter-spacing:2px;
+  color:var(--g);font-weight:500;margin-bottom:10px;
+}
+.nb-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.nb-list li{font-size:13px;color:var(--gray);padding-left:16px;position:relative;line-height:1.55;}
+.nb-list li::before{content:'→';position:absolute;left:0;color:var(--mint);font-size:11px;top:3px;}
+
+/* PACKAGE CARDS */
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:24px;}
+.pkg-card{
+  background:var(--white);border:0.5px solid var(--border);
+  border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;
+}
+.pkg-card.featured{border:1.5px solid var(--g);}
+.pkg-card .pk-rec{
+  position:absolute;top:14px;right:14px;
+  font-size:10px;font-weight:500;letter-spacing:.5px;
+  background:var(--g);color:var(--white);
+  padding:3px 10px;border-radius:20px;
+}
+.pkg-card .pk-cat{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--g);font-weight:500;margin-bottom:6px;}
+.pkg-card .pk-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.pkg-card .pk-price{font-size:22px;font-weight:700;color:var(--gd);margin-bottom:12px;}
+.pkg-card .pk-price span{font-size:12px;font-weight:400;color:var(--gray);}
+.pkg-card .pk-items{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.pk-item{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--gray);line-height:1.5;}
+.pk-item::before{content:'✓';color:var(--g);font-weight:600;font-size:11px;flex-shrink:0;margin-top:1px;}
+
+/* POLICY GRID */
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+@media(max-width:600px){.policy-grid{grid-template-columns:1fr;}.pkg-grid{grid-template-columns:1fr;}}
+.policy-card{
+  background:var(--white);border:0.5px solid var(--border);
+  border-radius:12px;padding:1.25rem;
+}
+.policy-card .pc-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.policy-card .pc-body{font-size:12px;color:var(--gray);line-height:1.65;}
+
+/* HOW TO ORDER */
+.order-steps{display:flex;flex-direction:column;gap:0;}
+.os-item{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:0.5px solid var(--border);}
+.os-item:last-child{border-bottom:none;}
+.os-num{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--gd);color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;flex-shrink:0;
+}
+.os-body .os-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px;}
+.os-body .os-desc{font-size:12px;color:var(--gray);line-height:1.6;}
+
+/* CONTACT FOOTER */
+.contact-bar{
+  background:var(--gd);border-radius:14px;
+  padding:2rem 2rem;margin-top:32px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.cb-text .cbt-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.cb-text .cbt-sub{font-size:13px;color:rgba(255,255,255,.5);}
+.cb-group{display:flex;gap:10px;flex-wrap:wrap;}
+.cb-action{
+  font-size:13px;font-weight:500;
+  padding:10px 24px;border-radius:24px;
+  background:var(--g);color:var(--white);
+  border:none;cursor:pointer;
+  white-space:nowrap;transition:background .2s;
+}
+.cb-action:hover{background:var(--gm);}
+.cb-action.secondary{
+  background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);
+}
+.cb-action.secondary:hover{background:rgba(255,255,255,.05);}
+
+/* PRINT */
+@media print{
+  .sticky-nav,.contact-bar button{display:none;}
+  .sec{display:block!important;}
+  .cover{page-break-after:always;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER (Menggunakan 4.png untuk latar belakang gelap) ═══ -->
+<div class="cover">
+  <div class="cv-top">
+    <div class="cv-brand">
+      <img src="4.png" alt="AKAR PROJECT">
+    </div>
+    <div class="cv-doc-type">Rate Card 2026</div>
+  </div>
+
+  <div class="cv-body">
+    <div class="cv-pill">Edisi Khusus Siswa & Mahasiswa</div>
+    <h1 class="cv-h1">Rate<br><em>Card</em></h1>
+    <p class="cv-desc">Harga transparan, layanan berkualitas. Kami percaya kepercayaan dimulai dari kejujuran — termasuk soal harga ramah kantong pelajar.</p>
+    <div class="cv-chips">
+      <div class="cv-chip">📝 Akademik & Edukasi</div>
+      <div class="cv-chip">🎨 Desain & Konten Digital</div>
+      <div class="cv-chip">📋 Dokumen & Administrasi</div>
+      <div class="cv-chip">🎪 Konsep Acara</div>
+    </div>
+  </div>
+
+  <div class="cv-bottom">
+    <div class="cb-left">Berlaku: 2026 · Tarif bersubsidi khusus pelajar aktif</div>
+    <div class="cb-contact">
+      <div class="cbc-label">Hubungi Kami</div>
+      <div class="cbc-val">@akarproject.eo · WA: 087886984984</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV (Menggunakan 3.png untuk latar belakang terang) ═══ -->
+<div class="sticky-nav">
+  <div class="nav-brand">
+    <img src="3.png" alt="Akar Project">
+  </div>
+  <div class="nav-tabs">
+    <button class="ntab active" onclick="showTab('layanan',this)">Layanan</button>
+    <button class="ntab" onclick="showTab('paket',this)">Paket Bundling</button>
+    <button class="ntab" onclick="showTab('cara',this)">Cara Order</button>
+    <button class="ntab" onclick="showTab('kebijakan',this)">Kebijakan</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ════════ TAB 1: LAYANAN ════════ -->
+<div class="sec active" id="tab-layanan">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Daftar Harga Pelajar</div>
+    <h2 class="sec-title">Semua <em>Layanan</em> & Harga</h2>
+    <p class="sec-sub">Harga bersifat estimasi awal yang disesuaikan dengan budget siswa/mahasiswa. Harga final dikonfirmasi setelah briefing kebutuhan selesai.</p>
+  </div>
+
+  <!-- KATEGORI 1: AKADEMIK -->
+  <div class="cat-header">
+    <div class="cat-icon">📝</div>
+    <div>
+      <div class="cat-name">Akademik & Edukasi</div>
+    </div>
+    <div class="cat-badge">⭐ Prioritas</div>
+  </div>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th style="width:28%">Layanan</th>
+        <th style="width:34%">Deskripsi</th>
+        <th style="width:18%">Termasuk</th>
+        <th class="right" style="width:20%">Harga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Makalah Standar</td>
+        <td class="desc">Makalah tugas kuliah/sekolah, 8–15 halaman. Terstruktur, referensi valid, bebas plagiarisme.</td>
+        <td class="note">1x revisi<span class="tag-incl">Daftar pustaka</span></td>
+        <td class="price">Rp 30.000–50.000</td>
+      </tr>
+      <tr>
+        <td class="name">Makalah Panjang / Ilmiah</td>
+        <td class="desc">Makalah 15–30 halaman, metodologi lebih ketat, bisa dengan abstrak dan daftar isi.</td>
+        <td class="note">2x revisi<span class="tag-incl">Abstrak</span></td>
+        <td class="price">Rp 55.000–95.000</td>
+      </tr>
+      <tr>
+        <td class="name">KTI (Karya Tulis Ilmiah)</td>
+        <td class="desc">KTI lomba atau kelas, termasuk latar belakang, rumusan masalah, metodologi, dan penutup.</td>
+        <td class="note">2x revisi</td>
+        <td class="price">Rp 75.000–135.000</td>
+      </tr>
+      <tr>
+        <td class="name">Rangkuman Materi</td>
+        <td class="desc">Rangkuman rapi dari buku/modul/PPT, disusun per bab, mudah dipelajari ulang.</td>
+        <td class="note">Format PDF/Word</td>
+        <td class="price">Rp 15.000–30.000</td>
+      </tr>
+      <tr>
+        <td class="name">Latihan Soal + Pembahasan</td>
+        <td class="desc">Soal latihan per mata pelajaran/topik, dilengkapi pembahasan dan kunci jawaban.</td>
+        <td class="note">10–25 soal</td>
+        <td class="price">Rp 20.000–35.000</td>
+      </tr>
+      <tr>
+        <td class="name">Mentoring / Bimbel Online</td>
+        <td class="desc">Sesi 1:1 atau kelompok via Google Meet/WA, untuk persiapan ujian atau materi kuliah awal.</td>
+        <td class="note">60–90 menit</td>
+        <td class="price">Rp 25.000–45.000 / sesi</td>
+      </tr>
+      <tr>
+        <td class="name">Bantu Tugas Harian</td>
+        <td class="desc">Tugas ringan harian seperti soal esai ringkas, pengerjaan PR, atau jawaban pertanyaan analisis pendek.</td>
+        <td class="note">Estimasi per tugas</td>
+        <td class="price">Rp 10.000–20.000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <!-- KATEGORI 2: DESAIN & KONTEN -->
+  <div class="cat-header">
+    <div class="cat-icon">🎨</div>
+    <div><div class="cat-name">Desain & Konten Digital</div></div>
+    <div class="cat-badge">⭐ Prioritas</div>
+  </div>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th style="width:28%">Layanan</th>
+        <th style="width:34%">Deskripsi</th>
+        <th style="width:18%">Termasuk</th>
+        <th class="right" style="width:20%">Harga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Desain Poster / Flyer</td>
+        <td class="desc">Poster acara sekolah, infografis tugas, atau publikasi komunitas. Format resolusi tinggi.</td>
+        <td class="note">1x revisi<span class="tag-incl">File PNG</span></td>
+        <td class="price">Rp 20.000–40.000</td>
+      </tr>
+      <tr>
+        <td class="name">Desain Feed Instagram (3 post)</td>
+        <td class="desc">Paket 3 post feed Instagram kepanitiaan atau komersial, satu tema visual konsisten.</td>
+        <td class="note">File PNG + Canva link</td>
+        <td class="price">Rp 50.000–85.000</td>
+      </tr>
+      <tr>
+        <td class="name">Template Medsos (5 template)</td>
+        <td class="desc">5 layout template medsos siap pakai dan dapat diedit ulang untuk feeds kepengurusan organisasi.</td>
+        <td class="note">Editable di Canva</td>
+        <td class="price">Rp 65.000–110.000</td>
+      </tr>
+      <tr>
+        <td class="name">Edit Video Reels / TikTok</td>
+        <td class="desc">Edit video pendek kreatif durasi 15–60 detik menggunakan CapCut. Dinamis dan pakai tren musik terbaru.</td>
+        <td class="note">1x revisi</td>
+        <td class="price">Rp 25.000–45.000</td>
+      </tr>
+      <tr>
+        <td class="name">Edit Video Pendek (1–5 menit)</td>
+        <td class="desc">Video dokumentasi proker organisasi, konten presentasi tugas kelompok, atau promosi event.</td>
+        <td class="note">1x revisi<span class="tag-incl">Teks + musik</span></td>
+        <td class="price">Rp 45.000–85.000</td>
+      </tr>
+      <tr>
+        <td class="name">Mockup Produk</td>
+        <td class="desc">Penyusunan mockup stiker visual, kemasan, atau desain kaos kepanitiaan di atas media digital.</td>
+        <td class="note">3–5 variasi angle</td>
+        <td class="price">Rp 30.000–55.000</td>
+      </tr>
+      <tr>
+        <td class="name">Kelola Medsos (per bulan)</td>
+        <td class="desc">Manajemen postingan feeds + caption strategis dan riset hashtag khusus untuk akun komunitas/proker.</td>
+        <td class="note">8–12 post/bulan</td>
+        <td class="price">Rp 120.000–220.000 /bln</td>
+      </tr>
+      <tr>
+        <td class="name">Digital Drawing / Ilustrasi</td>
+        <td class="desc">Ilustrasi digital atau pembuatan aset elemen visual kasual untuk maskot event kepanitiaan.</td>
+        <td class="note">1 karakter/elemen</td>
+        <td class="price">Rp 40.000–90.000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <!-- KATEGORI 3: DOKUMEN -->
+  <div class="cat-header">
+    <div class="cat-icon">📋</div>
+    <div><div class="cat-name">Dokumen & Administrasi</div></div>
+    <div class="cat-badge alt">Pendukung</div>
+  </div>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th style="width:28%">Layanan</th>
+        <th style="width:34%">Deskripsi</th>
+        <th style="width:18%">Termasuk</th>
+        <th class="right" style="width:20%">Harga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Laporan Kegiatan</td>
+        <td class="desc">Penyusunan berkas laporan pertanggungjawaban proker organisasi standar Word / PDF rapi.</td>
+        <td class="note">Format Word/PDF</td>
+        <td class="price">Rp 20.000–40.000</td>
+      </tr>
+      <tr>
+        <td class="name">Proposal Kegiatan</td>
+        <td class="desc">Proposal pencarian dana / perizinan birokrasi kampus komplit dengan latar belakang dan rancangan anggaran.</td>
+        <td class="note">1x revisi</td>
+        <td class="price">Rp 30.000–60.000</td>
+      </tr>
+      <tr>
+        <td class="name">Notulensi Rapat</td>
+        <td class="desc">Transkrip pengetikan rapi poin hasil pembahasan rapat dari bahan voice note atau catatan coretan.</td>
+        <td class="note">Per sesi rapat</td>
+        <td class="price">Rp 10.000–25.000</td>
+      </tr>
+      <tr>
+        <td class="name">Surat Resmi</td>
+        <td class="desc">Kertas kerja surat undangan narasumber, permohonan delegasi, atau peminjaman ruang sarpras resmi.</td>
+        <td class="note">Per surat</td>
+        <td class="price">Rp 10.000–20.000</td>
+      </tr>
+      <tr>
+        <td class="name">Scrapbook Digital</td>
+        <td class="desc">Penyusunan album kenangan wisuda kelulusan atau perpisahan pengurus organisasi interaktif.</td>
+        <td class="note">10–20 halaman</td>
+        <td class="price">Rp 45.000–85.000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <!-- KATEGORI 4: ACARA -->
+  <div class="cat-header">
+    <div class="cat-icon">🎪</div>
+    <div><div class="cat-name">Konsep & Koordinasi Acara</div></div>
+    <div class="cat-badge alt">Jangka Menengah</div>
+  </div>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th style="width:28%">Layanan</th>
+        <th style="width:34%">Deskripsi</th>
+        <th style="width:18%">Termasuk</th>
+        <th class="right" style="width:20%">Harga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Konsep Acara</td>
+        <td class="desc">Pemetaan tema kreatif, alur dekorasi, penentuan pilar aktivitas, serta mood board visual event sekolah.</td>
+        <td class="note">Dokumen konsep + moodboard</td>
+        <td class="price">Rp 60.000–110.000</td>
+      </tr>
+      <tr>
+        <td class="name">Rundown Acara</td>
+        <td class="desc">Pembuatan matriks susunan acara detail per menit lengkap beserta kolom pembagian tugas panitia inti.</td>
+        <td class="note">Dokumen Word/PDF</td>
+        <td class="price">Rp 40.000–75.000</td>
+      </tr>
+      <tr>
+        <td class="name">Koordinasi Acara Ringan</td>
+        <td class="desc">Paket perencanaan konsep + rundown struktural + pembuatan 1 poster publikasi utama acara kecil.</td>
+        <td class="note">Konsep + Rundown + Poster</td>
+        <td class="price">Rp 175.000–325.000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box" style="margin-top:24px;">
+    <div class="nb-title">Catatan Penting Harga</div>
+    <ul class="nb-list">
+      <li>Semua harga adalah estimasi awal khusus pelajar — nilai final mengikat setelah kami paham detail instruksi tugasmu.</li>
+      <li>Tarif dasar sangat fleksibel, menyesuaikan batas waktu pengumpulan (deadline kilat &lt;24 jam dikenakan penyesuaian).</li>
+      <li>Sistem pengerjaan transparan: pembayaran DP 50% di muka, sisa pelunasan dikirim setelah preview disetujui.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ TAB 2: PAKET BUNDLING ════════ -->
+<div class="sec" id="tab-paket">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Penawaran Spesial</div>
+    <h2 class="sec-title">Paket <em>Bundling</em></h2>
+    <p class="sec-sub">Kombinasi layanan dengan potongan harga jauh lebih besar — solusi praktis untuk pekan ujian, proker organisasi, atau promosi usaha rintisan.</p>
+  </div>
+
+  <div class="pkg-grid">
+    <div class="pkg-card featured">
+      <div class="pk-rec">Terlaris</div>
+      <div class="pk-cat">Paket Pelajar</div>
+      <div class="pk-name">Paket Belajar Tuntas</div>
+      <div class="pk-price">Rp 65.000 <span>/ paket</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">1 Makalah standar (8–15 hal)</li>
+        <li class="pk-item">1 Rangkuman materi ringkas</li>
+        <li class="pk-item">1 Set kisi latihan soal + jawaban</li>
+        <li class="pk-item">1x revisi untuk semua item</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Konten</div>
+      <div class="pk-name">Paket Konten Starter</div>
+      <div class="pk-price">Rp 110.000 <span>/ paket</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">5 template Instagram feeds Canva</li>
+        <li class="pk-item">1 desain poster publikasi utama</li>
+        <li class="pk-item">1 edit video promosi Reels/TikTok</li>
+        <li class="pk-item">Salinan teks naskah caption ready</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Manajemen</div>
+      <div class="pk-name">Paket Kelola Medsos</div>
+      <div class="pk-price">Rp 150.000 <span>/ bulan</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">8 postingan desain feeds rapi</li>
+        <li class="pk-item">Caption teks + riset hashtag populer</li>
+        <li class="pk-item">2 materi editan video pendek</li>
+        <li class="pk-item">Laporan ringkas performa bulanan</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Organisasi</div>
+      <div class="pk-name">Paket Acara Lengkap</div>
+      <div class="pk-price">Rp 220.000 <span>/ acara</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">Penyusunan tema & konsep utama</li>
+        <li class="pk-item">Rundown detail susunan teknis</li>
+        <li class="pk-item">1 poster pengumuman resolusi tinggi</li>
+        <li class="pk-item">Arsip proposal kegiatan siap ajukan</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Mahasiswa</div>
+      <div class="pk-name">Paket Akademik Pro</div>
+      <div class="pk-price">Rp 95.000 <span>/ paket</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">1 Makalah ilmiah (15–25 hal)</li>
+        <li class="pk-item">1 Bundel materi rangkuman lengkap</li>
+        <li class="pk-item">1 sesi konsultasi online (60 menit)</li>
+        <li class="pk-item">2x hak revisi berkas makalah</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Komunitas</div>
+      <div class="pk-name">Paket Publikasi Event</div>
+      <div class="pk-price">Rp 85.000 <span>/ acara</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">3 variasi desain poster banner publikasi</li>
+        <li class="pk-item">1 video editan teaser promosi (15 dtk)</li>
+        <li class="pk-item">Teks copy promosi siaran grup WA</li>
+        <li class="pk-item">Template instastory hitung mundur</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="nb-title">Catatan Paket Bundling</div>
+    <ul class="nb-list">
+      <li>Item layanan di dalam paket bersifat fleksibel—bisa ditukar dengan variasi jasa lain yang setara nilainya.</li>
+      <li>Mendapatkan kupon potongan tambahan bagi kelompok kepanitiaan yang mengorder ulang proyek berikutnya.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ TAB 3: CARA ORDER ════════ -->
+<div class="sec" id="tab-cara">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Alur Pemesanan</div>
+    <h2 class="sec-title">Cara <em>Order</em></h2>
+    <p class="sec-sub">Proses birokrasi pemesanan praktis dan aman — terstruktur dari awal konsultasi hingga serah terima berkas.</p>
+  </div>
+
+  <div class="order-steps" style="margin-bottom:28px;">
+    <div class="os-item">
+      <div class="os-num">1</div>
+      <div class="os-body">
+        <div class="os-title">Hubungi kami via DM Instagram atau WhatsApp</div>
+        <div class="os-desc">Kirim pesan ke Instagram <span style="color:var(--gd); font-weight:500;">@akarproject.eo</span> atau kontak langsung WhatsApp ke nomor <span style="color:var(--gd); font-weight:500;">087886984984</span>. Infokan jenis tugas/jasa dan batas waktu pengumpulanmu.</div>
+      </div>
+    </div>
+    <div class="os-item">
+      <div class="os-num">2</div>
+      <div class="os-body">
+        <div class="os-title">Konsultasi & briefing (GRATIS)</div>
+        <div class="os-desc">Tim ahli kami akan memeriksa parameter instruksi tugas atau rancangan visualmu dalam 1x24 jam untuk menyamakan ekspektasi hasil akhir. Sesi ini sepenuhnya gratis tanpa biaya tersembunyi.</div>
+      </div>
+    </div>
+    <div class="os-item">
+      <div class="os-num">3</div>
+      <div class="os-body">
+        <div class="os-title">Konfirmasi harga & jadwal pengerjaan</div>
+        <div class="os-desc">Kami memberikan penawaran nominal harga final bersubsidi pelajar beserta estimasi waktu penyerahan draf. Setelah disepakati bersama, tarif dijamin mengunci dan tidak akan mendadak naik di tengah jalan.</div>
+      </div>
+    </div>
+    <div class="os-item">
+      <div class="os-num">4</div>
+      <div class="os-body">
+        <div class="os-title">Pembayaran DP 50%</div>
+        <div class="os-desc">Proses pengerjaan proyek pesanan resmi masuk ke antrean sistem kami setelah pembayaran uang muka (DP) senilai 50% divalidasi via transfer perbankan atau e-wallet (DANA/OVO/GoPay).</div>
+      </div>
+    </div>
+    <div class="os-item">
+      <div class="os-num">5</div>
+      <div class="os-body">
+        <div class="os-title">Proses pengerjaan & update berkala</div>
+        <div class="os-desc">Tim kami memproses pesanan secara teliti sesuai kesepakatan timeline. Untuk order berdurasi panjang, kami memberikan info perkembangan berkala secara proaktif.</div>
+      </div>
+    </div>
+    <div class="os-item">
+      <div class="os-num">6</div>
+      <div class="os-body">
+        <div class="os-title">Preview & revisi</div>
+        <div class="os-desc">Kami mengirimkan draf berupa berkas contoh ber-watermark pelindung untuk diperiksa. Kamu bisa mengajukan revisi atau koreksi minor sesuai kesepakatan batas awal.</div>
+      </div>
+    </div>
+    <div class="os-item">
+      <div class="os-num">7</div>
+      <div class="os-body">
+        <div class="os-title">Pelunasan & file final dikirim</div>
+        <div class="os-desc">Setelah hasil draf dinilai oke, lakukan transfer pelunasan sisa 50%. Tim administrasi kami akan langsung mengirimkan dokumen berkas final resolusi penuh tanpa watermark saat itu juga. Selesai! 🌱</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="nb-title">Estimasi Waktu Pengerjaan Umum</div>
+    <ul class="nb-list">
+      <li><strong>Makalah harian / rangkuman:</strong> 1–2 hari kerja kerja.</li>
+      <li><strong>Desain poster tunggal / video pendek:</strong> 1–2 hari kerja kerja.</li>
+      <li><strong>Karya Tulis Ilmiah (KTI) / Proposal:</strong> 3–5 hari kerja (tergantung tingkat kedalaman riset).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ TAB 4: KEBIJAKAN ════════ -->
+<div class="sec" id="tab-kebijakan">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Syarat & Ketentuan</div>
+    <h2 class="sec-title">Kebijakan <em>Layanan</em></h2>
+    <p class="sec-sub">Regulasi kerja transparan demi menjaga kenyamanan transaksi, keamanan berkas, dan keadilan hak kedua belah pihak.</p>
+  </div>
+
+  <div class="policy-grid" style="margin-bottom:20px;">
+    <div class="policy-card">
+      <div class="pc-title">💳 Metode Pembayaran</div>
+      <div class="pc-body">Sistem pembayaran wajib melalui saluran divalidasi bank transfer (BRI/BCA) atau dompet digital terdaftar (GoPay, OVO, DANA). Bukti transfer mutasi wajib diunggah jernih ke admin.</div>
+    </div>
+    <div class="policy-card">
+      <div class="pc-title">🔄 Pembatasan Regulasi Revisi</div>
+      <div class="pc-body">Mencakup perbaikan aspek minor (koreksi salah ketik data, perubahan warna aksen font, atau tata letak layout ringan). Perubahan konsep radikal di luar brief awal dikenakan tarif tambahan.</div>
+    </div>
+    <div class="policy-card">
+      <div class="pc-title">❌ Kebijakan Pembatalan Proyek</div>
+      <div class="pc-body">Pembatalan sepihak sebelum proses ketik berjalan: dana DP dikembalikan utuh 50%. Pembatalan sepihak saat pengerjaan di komputer sudah berjalan: uang muka otomatis hangus.</div>
+    </div>
+    <div class="policy-card">
+      <div class="pc-title">⏰ Proteksi Keterlambatan Kirim</div>
+      <div class="pc-body">Jika berkas draf terlambat dikirim melewati kesepakatan murni akibat kelalaian internal kami, pemesan berhak mendapatkan potongan kompensasi langsung 10% dari nilai total tarif.</div>
+    </div>
+    <div class="policy-card">
+      <div class="pc-title">📁 Kepemilikan Hak Berkas</div>
+      <div class="pc-body">Aset digital seutuhnya beralih menjadi hak penuh pemesan setelah sisa pelunasan diselesaikan. Kami berhak memasukkannya ke galeri portofolio dengan menyamarkan identitas.</div>
+    </div>
+    <div class="policy-card">
+      <div class="pc-title">🛡️ Jaminan Privasi Rahasia</div>
+      <div class="pc-body">Seluruh identitas diri pemesan, nama instansi lembaga sekolah, serta dokumen penunjang mentah dijamin aman, rahasia, dan tidak akan dibocorkan ke pihak luar mana pun.</div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="nb-title">Komitmen Etika Kerja Akar Project</div>
+    <ul class="nb-list">
+      <li>Kami berkomitmen mendukung iklim edukasi etis—**tegas menolak** segala bentuk kecurangan ilegal seperti jual beli skripsi kelulusan akhir atau joki sistem ujian live.</li>
+      <li>Segala layanan pengerjaan bersifat bantuan pendukung belajar, bimbingan literatur, serta asistensi tata letak visual administrasi yang sah dan dapat dipertanggungjawabkan.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTACT BAR (Terintegrasi ke nomor WA & Link IG yang valid) -->
+<div class="contact-bar">
+  <div class="cb-text">
+    <div class="cbt-title">Siap mulai? Konsultasi dulu — gratis.</div>
+    <div class="cbt-sub">Kirim pesan langsung ke DM Instagram @akarproject.eo atau hubungi via WhatsApp Chat.</div>
+  </div>
+  <div class="cb-group">
+    <button class="cb-action secondary" onclick="window.open('https://www.instagram.com/akarproject.eo/','_blank')">Instagram</button>
+    <button class="cb-action" onclick="window.open('https://wa.me/6287886984984','_blank')">WhatsApp Chat →</button>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.ntab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.sticky-nav').offsetTop - 10, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
