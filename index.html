@@ -233,7 +233,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 }
 .cb-action.secondary:hover{background:rgba(255,255,255,.05);}
 
-/* ═══ ENGINE UI-UX-PRO-MAX RESONSIVE MOBILE GRID SYSTEM ═══ */
+/* MEDIA QUERIES RESPONSIVE MOBILE */
 @media(max-width:650px){
   .cover { padding: 40px 24px; }
   .cv-top { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -245,7 +245,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   .ntab { flex-shrink: 0; font-size: 11px; padding: 4px 10px; }
   
   .main { padding: 32px 16px; }
-  .price-table { min-width: 580px; } /* Mencegah tabel gepeng di seluler */
+  .price-table { min-width: 580px; }
   
   .policy-grid, .pkg-grid { grid-template-columns: 1fr; }
   
@@ -267,9 +267,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   </div>
 
   <div class="cv-body">
-    <div class="cv-pill">Edisi Khusus Siswa & Mahasiswa</div>
+    <div class="cv-pill">Subsidi Spesial Kantong Pelajar</div>
     <h1 class="cv-h1">Rate<br><em>Card</em></h1>
-    <p class="cv-desc">Harga transparan, layanan berkualitas. Kami percaya kepercayaan dimulai dari kejujuran — termasuk soal harga ramah kantong pelajar.</p>
+    <p class="cv-desc">Layanan akademik, administrasi, dan desain premium dengan harga eceran bersahabat. Karena urusan tugas tidak harus bikin dompet tipis.</p>
     <div class="cv-chips">
       <div class="cv-chip">📝 Akademik & Edukasi</div>
       <div class="cv-chip">🎨 Desain & Konten Digital</div>
@@ -279,7 +279,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   </div>
 
   <div class="cv-bottom">
-    <div class="cb-left">Berlaku: 2026 · Tarif bersubsidi khusus pelajar aktif</div>
+    <div class="cb-left">Berlaku: 2026 · Tarif Mikro Khusus Siswa & Mahasiswa</div>
     <div class="cb-contact">
       <div class="cbc-label">Hubungi Kami</div>
       <div class="cbc-val">@akarproject.eo · WA: 087886984983</div>
@@ -305,9 +305,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 <!-- ════════ TAB 1: LAYANAN ════════ -->
 <div class="sec active" id="tab-layanan">
   <div class="sec-header">
-    <div class="sec-eyebrow">Daftar Harga Pelajar</div>
+    <div class="sec-eyebrow">Daftar Harga Eceran</div>
     <h2 class="sec-title">Semua <em>Layanan</em> & Harga</h2>
-    <p class="sec-sub">Harga bersifat Playfair awal yang disesuaikan dengan budget siswa/mahasiswa. Harga final dikonfirmasi setelah briefing kebutuhan selesai.</p>
+    <p class="sec-sub">Butuh bantuan eceran? Mulai dari lima ribu rupiah saja. Harga final disesuaikan kembali dengan detail tenggat waktu (deadline) tugasmu.</p>
   </div>
 
   <!-- KATEGORI 1: AKADEMIK -->
@@ -316,7 +316,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
     <div>
       <div class="cat-name">Akademik & Edukasi</div>
     </div>
-    <div class="cat-badge">⭐ Prioritas</div>
+    <div class="cat-badge">⭐ Populer</div>
   </div>
 
   <div class="price-table-wrapper">
@@ -330,47 +330,47 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
         </tr>
       </thead>
       <tbody>
+        <tr style="background: rgba(29,158,117,.03);">
+          <td class="name">Bantu Tugas Harian Kilat</td>
+          <td class="desc">Tugas harian ringan seperti menjawab 1-3 soal esai pendek, isian singkat, atau rangkuman 1 halaman.</td>
+          <td class="note">Pengerjaan kilat</td>
+          <td class="price" style="color: var(--g);">Rp 5.000–15.000</td>
+        </tr>
+        <tr>
+          <td class="name">Rangkuman Materi per Bab</td>
+          <td class="desc">Rangkuman poin inti dari buku cetak, file PDF, atau presentasi PPT kuliah disusun rapi agar mudah dihapal.</td>
+          <td class="note">Format Word/PDF</td>
+          <td class="price">Rp 10.000–20.000</td>
+        </tr>
         <tr>
           <td class="name">Makalah Standar</td>
-          <td class="desc">Makalah tugas kuliah/sekolah, 8–15 halaman. Terstruktur, referensi valid, bebas plagiarisme.</td>
+          <td class="desc">Pembuatan makalah tugas sekolah atau kuliah (8–15 halaman). Struktur rapi dan referensi valid.</td>
           <td class="note">1x revisi<span class="tag-incl">Daftar pustaka</span></td>
-          <td class="price">Rp 30.000–50.000</td>
+          <td class="price">Rp 25.000–45.000</td>
         </tr>
         <tr>
           <td class="name">Makalah Panjang / Ilmiah</td>
-          <td class="desc">Makalah 15–30 halaman, metodologi lebih ketat, bisa dengan abstrak dan daftar isi.</td>
+          <td class="desc">Kajian tugas mendalam (15–30 halaman) dengan struktur metodologi yang lebih ketat.</td>
           <td class="note">2x revisi<span class="tag-incl">Abstrak</span></td>
-          <td class="price">Rp 55.000–95.000</td>
+          <td class="price">Rp 50.000–85.000</td>
         </tr>
         <tr>
           <td class="name">KTI (Karya Tulis Ilmiah)</td>
-          <td class="desc">KTI lomba atau kelas, termasuk latar belakang, rumusan masalah, metodologi, dan penutup.</td>
+          <td class="desc">Rancangan komplit KTI untuk keperluan lomba formal, mulai dari bab latar belakang hingga penutup.</td>
           <td class="note">2x revisi</td>
-          <td class="price">Rp 75.000–135.000</td>
-        </tr>
-        <tr>
-          <td class="name">Rangkuman Materi</td>
-          <td class="desc">Rangkuman rapi dari buku/modul/PPT, disusun per bab, mudah dipelajari ulang.</td>
-          <td class="note">Format PDF/Word</td>
-          <td class="price">Rp 15.000–30.000</td>
+          <td class="price">Rp 75.000–120.000</td>
         </tr>
         <tr>
           <td class="name">Latihan Soal + Pembahasan</td>
-          <td class="desc">Soal latihan per mata pelajaran/topik, dilengkapi pembahasan dan kunci jawaban.</td>
-          <td class="note">10–25 soal</td>
-          <td class="price">Rp 20.000–35.000</td>
+          <td class="desc">Penyusunan paket soal latihan berkisar 10–25 butir lengkap dengan cara penyelesaian/kunci jawaban.</td>
+          <td class="note">Review materi</td>
+          <td class="price">Rp 15.000–30.000</td>
         </tr>
         <tr>
           <td class="name">Mentoring / Bimbel Online</td>
-          <td class="desc">Sesi 1:1 atau kelompok via Google Meet/WA, untuk persiapan ujian atau materi kuliah awal.</td>
+          <td class="desc">Sesi belajar privat tanya jawab interaktif bareng tim kami via Google Meet atau WhatsApp Room.</td>
           <td class="note">60–90 menit</td>
-          <td class="price">Rp 25.000–45.000 / sesi</td>
-        </tr>
-        <tr>
-          <td class="name">Bantu Tugas Harian</td>
-          <td class="desc">Tugas ringan harian seperti soal esai ringkas, pengerjaan PR, atau jawaban pertanyaan analisis pendek.</td>
-          <td class="note">Estimasi per tugas</td>
-          <td class="price">Rp 10.000–20.000</td>
+          <td class="price">Rp 20.000–40.000 / sesi</td>
         </tr>
       </tbody>
     </table>
@@ -382,7 +382,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="cat-header">
     <div class="cat-icon">🎨</div>
     <div><div class="cat-name">Desain & Konten Digital</div></div>
-    <div class="cat-badge">⭐ Prioritas</div>
+    <div class="cat-badge">⭐ Populer</div>
   </div>
 
   <div class="price-table-wrapper">
@@ -396,53 +396,47 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
         </tr>
       </thead>
       <tbody>
+        <tr style="background: rgba(29,158,117,.03);">
+          <td class="name">Edit File / Crop / Aset Mikro</td>
+          <td class="desc">Jasa edit gambar mikro seperti ganti background pasfoto, potong elemen stiker, atau perbaikan teks poster.</td>
+          <td class="note">Proses cepat</td>
+          <td class="price" style="color: var(--g);">Rp 5.000 / aset</td>
+        </tr>
         <tr>
-          <td class="name">Desain Poster / Flyer</td>
-          <td class="desc">Poster acara sekolah, infografis tugas, atau publikasi komunitas. Format resolusi tinggi.</td>
+          <td class="name">Desain Poster / Flyer Tugas</td>
+          <td class="desc">Media visual kreatif untuk infografis penunjang presentasi tugas kelompok atau publikasi pamflet event.</td>
           <td class="note">1x revisi<span class="tag-incl">File PNG</span></td>
-          <td class="price">Rp 20.000–40.000</td>
+          <td class="price">Rp 15.000–30.000</td>
+        </tr>
+        <tr>
+          <td class="name">Edit Video Reels / TikTok Short</td>
+          <td class="desc">Jahit potongan video mentah durasi di bawah 60 detik di CapCut. Termasuk pasang transisi, subtitle, & musik tren.</td>
+          <td class="note">1x revisi</td>
+          <td class="price">Rp 15.000–35.000</td>
         </tr>
         <tr>
           <td class="name">Desain Feed Instagram (3 post)</td>
-          <td class="desc">Paket 3 post feed Instagram kepanitiaan atau komersial, satu tema visual konsisten.</td>
-          <td class="note">File PNG + Canva link</td>
+          <td class="desc">Paket feeds isi 3 baris desain berkesinambungan dengan satu tone tema visual estetik.</td>
+          <td class="note">Akses Canva link</td>
+          <td class="price">Rp 40.000–70.000</td>
+        </tr>
+        <tr>
+          <td class="name">Template Medsos Organisasi</td>
+          <td class="desc">Pembuatan 5 layout bingkai kosong siap edit ulang untuk kebutuhan info proker berkala pengurus.</td>
+          <td class="note">Editable Canva</td>
           <td class="price">Rp 50.000–85.000</td>
         </tr>
         <tr>
-          <td class="name">Template Medsos (5 template)</td>
-          <td class="desc">5 layout template medsos siap pakai dan dapat diedit ulang untuk feeds kepengurusan organisasi.</td>
-          <td class="note">Editable di Canva</td>
-          <td class="price">Rp 65.000–110.000</td>
+          <td class="name">Edit Video Panjang (1–5 menit)</td>
+          <td class="desc">Editing kompilasi klip dokumentasi liburan, vlog kelas, atau bumper video perkenalan kelompok.</td>
+          <td class="note">Free teks + musik</td>
+          <td class="price">Rp 35.000–65.000</td>
         </tr>
         <tr>
-          <td class="name">Edit Video Reels / TikTok</td>
-          <td class="desc">Edit video pendek kreatif durasi 15–60 detik menggunakan CapCut. Dinamis dan pakai tren musik terbaru.</td>
-          <td class="note">1x revisi</td>
-          <td class="price">Rp 25.000–45.000</td>
-        </tr>
-        <tr>
-          <td class="name">Edit Video Pendek (1–5 menit)</td>
-          <td class="desc">Video dokumentasi proker organisasi, konten presentasi tugas kelompok, atau promosi event.</td>
-          <td class="note">1x revisi<span class="tag-incl">Teks + musik</span></td>
-          <td class="price">Rp 45.000–85.000</td>
-        </tr>
-        <tr>
-          <td class="name">Mockup Produk</td>
-          <td class="desc">Penyusunan mockup stiker visual, kemasan, atau desain kaos kepanitiaan di atas media digital.</td>
-          <td class="note">3–5 variasi angle</td>
-          <td class="price">Rp 30.000–55.000</td>
-        </tr>
-        <tr>
-          <td class="name">Kelola Medsos (per bulan)</td>
-          <td class="desc">Manajemen postingan feeds + caption strategis dan riset hashtag khusus untuk akun komunitas/proker.</td>
-          <td class="note">8–12 post/bulan</td>
-          <td class="price">Rp 120.000–220.000 /bln</td>
-        </tr>
-        <tr>
-          <td class="name">Digital Drawing / Ilustrasi</td>
-          <td class="desc">Ilustrasi digital atau pembuatan aset elemen visual kasual untuk maskot event kepanitiaan.</td>
-          <td class="note">1 karakter/elemen</td>
-          <td class="price">Rp 40.000–90.000</td>
+          <td class="name">Mockup Produk / Digital Drawing</td>
+          <td class="desc">Visualisasi penempelan stiker label jualan di botol atau pembuatan aset ilustrasi karakter kasual.</td>
+          <td class="note">High-Res PNG</td>
+          <td class="price">Rp 25.000–50.000</td>
         </tr>
       </tbody>
     </table>
@@ -454,6 +448,54 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="cat-header">
     <div class="cat-icon">📋</div>
     <div><div class="cat-name">Dokumen & Administrasi</div></div>
+    <div class="cat-badge alt">Eceran</div>
+  </div>
+
+  <div class="price-table-wrapper">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Layanan</th>
+          <th style="width:34%">Deskripsi</th>
+          <th style="width:18%">Termasuk</th>
+          <th class="right" style="width:20%">Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background: rgba(29,158,117,.03);">
+          <td class="name">Surat Resmi / Undangan Panitia</td>
+          <td class="desc">Ketik template format surat peminjaman alat, surat izin kegiatan, atau undangan pemateri per surat.</td>
+          <td class="note">Siap cetak</td>
+          <td class="price" style="color: var(--g);">Rp 5.000–10.000</td>
+        </tr>
+        <tr>
+          <td class="name">Notulensi Hasil Rapat</td>
+          <td class="desc">Merapikan rekaman suara rapat kepanitiaan atau coretan berantakan menjadi poin kesimpulan resmi.</td>
+          <td class="note">Per sesi rapat</td>
+          <td class="price">Rp 10.000–20.000</td>
+        </tr>
+        <tr>
+          <td class="name">Laporan Pertanggungjawaban (LPJ)</td>
+          <td class="desc">Penyusunan berkas laporan tertulis pasca kegiatan kepanitiaan selesai dalam format rapi.</td>
+          <td class="note">Format Word/PDF</td>
+          <td class="price">Rp 20.000–40.000</td>
+        </tr>
+        <tr>
+          <td class="name">Proposal Kegiatan Acara</td>
+          <td class="desc">Pembuatan naskah proposal pengajuan dana sponsor lengkap dengan rincian tabel anggaran biaya.</td>
+          <td class="note">1x revisi</td>
+          <td class="price">Rp 25.000–50.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- KATEGORI 4: ACARA -->
+  <div class="cat-header">
+    <div class="cat-icon">🎪</div>
+    <div><div class="cat-name">Konsep & Koordinasi Acara</div></div>
     <div class="cat-badge alt">Pendukung</div>
   </div>
 
@@ -469,76 +511,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
       </thead>
       <tbody>
         <tr>
-          <td class="name">Laporan Kegiatan</td>
-          <td class="desc">Penyusunan berkas laporan pertanggungjawaban proker organisasi standar Word / PDF rapi.</td>
-          <td class="note">Format Word/PDF</td>
-          <td class="price">Rp 20.000–40.000</td>
+          <td class="name">Rundown Acara Detail</td>
+          <td class="desc">Matriks susunan waktu per menit hari-H, alur masuk pengisi acara, dan pembagian jobdesk kerja panitia.</td>
+          <td class="note">Matriks detail</td>
+          <td class="price">Rp 30.000–50.000</td>
         </tr>
         <tr>
-          <td class="name">Proposal Kegiatan</td>
-          <td class="desc">Proposal pencarian dana / perizinan birokrasi kampus komplit dengan latar belakang dan rancangan anggaran.</td>
-          <td class="note">1x revisi</td>
-          <td class="price">Rp 30.000–60.000</td>
-        </tr>
-        <tr>
-          <td class="name">Notulensi Rapat</td>
-          <td class="desc">Transkrip pengetikan rapi poin hasil pembahasan rapat dari bahan voice note atau catatan coretan.</td>
-          <td class="note">Per sesi rapat</td>
-          <td class="price">Rp 10.000–25.000</td>
-        </tr>
-        <tr>
-          <td class="name">Surat Resmi</td>
-          <td class="desc">Kertas kerja surat undangan narasumber, permohonan delegasi, atau peminjaman ruang sarpras resmi.</td>
-          <td class="note">Per surat</td>
-          <td class="price">Rp 10.000–20.000</td>
-        </tr>
-        <tr>
-          <td class="name">Scrapbook Digital</td>
-          <td class="desc">Penyusunan album kenangan wisuda kelulusan atau perpisahan pengurus organisasi interaktif.</td>
-          <td class="note">10–20 halaman</td>
-          <td class="price">Rp 45.000–85.000</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- KATEGORI 4: ACARA -->
-  <div class="cat-header">
-    <div class="cat-icon">🎪</div>
-    <div><div class="cat-name">Konsep & Koordinasi Acara</div></div>
-    <div class="cat-badge alt">Jangka Menengah</div>
-  </div>
-
-  <div class="price-table-wrapper">
-    <table class="price-table">
-      <thead>
-        <tr>
-          <th style="width:28%">Layanan</th>
-          <th style="width:34%">Deskripsi</th>
-          <th style="width:18%">Termasuk</th>
-          <th class="right" style="width:20%">Harga</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="name">Konsep Acara</td>
-          <td class="desc">Pemetaan tema kreatif, alur dekorasi, penentuan pilar aktivitas, serta mood board visual event sekolah.</td>
-          <td class="note">Dokumen konsep + moodboard</td>
-          <td class="price">Rp 60.000–110.000</td>
-        </tr>
-        <tr>
-          <td class="name">Rundown Acara</td>
-          <td class="desc">Pembuatan matriks susunan acara detail per menit lengkap beserta kolom pembagian tugas panitia inti.</td>
-          <td class="note">Dokumen Word/PDF</td>
-          <td class="price">Rp 40.000–75.000</td>
+          <td class="name">Konsep Tema + Moodboard</td>
+          <td class="desc">Sumbang ide penentuan tema besar, arahan dresscode kostum, hiasan dekorasi, dan moodboard visual.</td>
+          <td class="note">Slide konsep</td>
+          <td class="price">Rp 45.000–80.000</td>
         </tr>
         <tr>
           <td class="name">Koordinasi Acara Ringan</td>
-          <td class="desc">Paket perencanaan konsep + rundown struktural + pembuatan 1 poster publikasi utama acara kecil.</td>
-          <td class="note">Konsep + Rundown + Poster</td>
-          <td class="price">Rp 175.000–325.000</td>
+          <td class="desc">Paket lengkap gabungan pembuatan Konsep Acara + Susunan Rundown + 1 Desain Poster promosi.</td>
+          <td class="note">Paket Lengkap</td>
+          <td class="price">Rp 99.000–199.000</td>
         </tr>
       </tbody>
     </table>
@@ -547,9 +535,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="note-box" style="margin-top:24px;">
     <div class="nb-title">Catatan Penting Harga</div>
     <ul class="nb-list">
-      <li>Semua harga adalah estimasi awal khusus pelajar — nilai final mengikat setelah kami paham detail instruksi tugasmu.</li>
-      <li>Tarif dasar sangat fleksibel, menyesuaikan batas waktu pengumpulan (deadline kilat &lt;24 jam dikenakan penyesuaian).</li>
-      <li>Sistem pengerjaan transparan: pembayaran DP 50% di muka, sisa pelunasan dikirim setelah preview disetujui.</li>
+      <li>Semua harga bersubsidi khusus pelajar—tarif final mengunci setelah tim kami memahami lembar panduan tugasmu.</li>
+      <li>Pemesanan dengan tenggat kilat (kurang dari 24 jam) akan disesuaikan secara transparan di awal chat.</li>
+      <li>Sistem pembayaran aman: DP 50% sebagai tanda jadi mulai ketik, sisa 50% dibayar setelah draf preview disetujui.</li>
     </ul>
   </div>
 </div>
@@ -557,82 +545,77 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 <!-- ════════ TAB 2: PAKET BUNDLING ════════ -->
 <div class="sec" id="tab-paket">
   <div class="sec-header">
-    <div class="sec-eyebrow">Penawaran Spesial</div>
+    <div class="sec-eyebrow">Gabungan Jasa Super Hemat</div>
     <h2 class="sec-title">Paket <em>Bundling</em></h2>
-    <p class="sec-sub">Kombinasi layanan dengan potongan harga jauh lebih besar — solusi praktis untuk pekan ujian, proker organisasi, atau promosi usaha rintisan.</p>
+    <p class="sec-sub">Beli borongan jauh lebih hemat. Solusi cerdas biar dapet banyak tugas beres tanpa menguras sisa uang saku.</p>
   </div>
 
   <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Tugas Mikro</div>
+      <div class="pk-name">Paket Tugas Kilat</div>
+      <div class="pk-price">Rp 20.000 <span>/ paket</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">1 Bantu Tugas Harian Ringan</li>
+        <li class="pk-item">1 Rangkuman Materi (1 Bab/PPT)</li>
+        <li class="pk-item">1x revisi minor gratis</li>
+      </ul>
+    </div>
+
     <div class="pkg-card featured">
-      <div class="pk-rec">Terlaris</div>
-      <div class="pk-cat">Paket Pelajar</div>
+      <div class="pk-rec">Paling Laris</div>
+      <div class="pk-cat">Paket Sekolah / Kuliah</div>
       <div class="pk-name">Paket Belajar Tuntas</div>
-      <div class="pk-price">Rp 65.000 <span>/ paket</span></div>
+      <div class="pk-price">Rp 45.000 <span>/ paket</span></div>
       <ul class="pk-items">
-        <li class="pk-item">1 Makalah standar (8–15 hal)</li>
+        <li class="pk-item">1 Makalah standar (8–15 halaman)</li>
         <li class="pk-item">1 Rangkuman materi ringkas</li>
-        <li class="pk-item">1 Set kisi latihan soal + jawaban</li>
-        <li class="pk-item">1x revisi untuk semua item</li>
+        <li class="pk-item">1 Set latihan soal + pembahasan</li>
+        <li class="pk-item">Hak revisi draf makalah</li>
       </ul>
     </div>
 
     <div class="pkg-card">
-      <div class="pk-cat">Paket Konten</div>
-      <div class="pk-name">Paket Konten Starter</div>
-      <div class="pk-price">Rp 110.000 <span>/ paket</span></div>
-      <ul class="pk-items">
-        <li class="pk-item">5 template Instagram feeds Canva</li>
-        <li class="pk-item">1 desain poster publikasi utama</li>
-        <li class="pk-item">1 edit video promosi Reels/TikTok</li>
-        <li class="pk-item">Salinan teks naskah caption ready</li>
-      </ul>
-    </div>
-
-    <div class="pkg-card">
-      <div class="pk-cat">Paket Manajemen</div>
-      <div class="pk-name">Paket Kelola Medsos</div>
-      <div class="pk-price">Rp 150.000 <span>/ bulan</span></div>
-      <ul class="pk-items">
-        <li class="pk-item">8 postingan desain feeds rapi</li>
-        <li class="pk-item">Caption teks + riset hashtag populer</li>
-        <li class="pk-item">2 materi editan video pendek</li>
-        <li class="pk-item">Laporan ringkas performa bulanan</li>
-      </ul>
-    </div>
-
-    <div class="pkg-card">
-      <div class="pk-cat">Paket Organisasi</div>
-      <div class="pk-name">Paket Acara Lengkap</div>
-      <div class="pk-price">Rp 220.000 <span>/ acara</span></div>
-      <ul class="pk-items">
-        <li class="pk-item">Penyusunan tema & konsep utama</li>
-        <li class="pk-item">Rundown detail susunan teknis</li>
-        <li class="pk-item">1 poster pengumuman resolusi tinggi</li>
-        <li class="pk-item">Arsip proposal kegiatan siap ajukan</li>
-      </ul>
-    </div>
-
-    <div class="pkg-card">
-      <div class="pk-cat">Paket Mahasiswa</div>
+      <div class="pk-cat">Paket Mahasiswa Pro</div>
       <div class="pk-name">Paket Akademik Pro</div>
-      <div class="pk-price">Rp 95.000 <span>/ paket</span></div>
+      <div class="pk-price">Rp 69.000 <span>/ paket</span></div>
       <ul class="pk-items">
-        <li class="pk-item">1 Makalah ilmiah (15–25 hal)</li>
-        <li class="pk-item">1 Bundel materi rangkuman lengkap</li>
-        <li class="pk-item">1 sesi konsultasi online (60 menit)</li>
-        <li class="pk-item">2x hak revisi berkas makalah</li>
+        <li class="pk-item">1 Makalah ilmiah panjang (15-25 hal)</li>
+        <li class="pk-item">1 Bundel ringkasan materi lengkap</li>
+        <li class="pk-item">1 Sesi tanya jawab mentoring (45 menit)</li>
       </ul>
     </div>
 
     <div class="pkg-card">
-      <div class="pk-cat">Paket Komunitas</div>
-      <div class="pk-name">Paket Publikasi Event</div>
-      <div class="pk-price">Rp 85.000 <span>/ acara</span></div>
+      <div class="pk-cat">Paket Kepanitiaan</div>
+      <div class="pk-name">Paket Acara Starter</div>
+      <div class="pk-price">Rp 40.000 <span>/ paket</span></div>
       <ul class="pk-items">
-        <li class="pk-item">3 variasi desain poster banner publikasi</li>
-        <li class="pk-item">1 video editan teaser promosi (15 dtk)</li>
-        <li class="pk-item">Teks copy promosi siaran grup WA</li>
-        <li class="pk-item">Template instastory hitung mundur</li>
+        <li class="pk-item">1 File Surat Undangan Kepanitiaan</li>
+        <li class="pk-item">1 Desain Poster Publikasi Utama</li>
+        <li class="pk-item">File Master PNG resolusi tinggi</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Konten Sosial</div>
+      <div class="pk-name">Paket Media Starter</div>
+      <div class="pk-price">Rp 75.000 <span>/ paket</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">5 Template desain feeds Canva link</li>
+        <li class="pk-item">1 Materi editan video pendek tiktok/reels</li>
+        <li class="pk-item">Naskah caption teks siap pakai</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pk-cat">Paket Organisasi Event</div>
+      <div class="pk-name">Paket Event Lengkap</div>
+      <div class="pk-price">Rp 149.000 <span>/ event</span></div>
+      <ul class="pk-items">
+        <li class="pk-item">Konsep Ide Kreatif & Tema Utama</li>
+        <li class="pk-item">Susunan Rundown teknis per menit</li>
+        <li class="pk-item">1 Desain poster utama + berkas proposal</li>
       </ul>
     </div>
   </div>
@@ -640,8 +623,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="note-box">
     <div class="nb-title">Catatan Paket Bundling</div>
     <ul class="nb-list">
-      <li>Item layanan di dalam paket bersifat fleksibel—bisa ditukar dengan variasi jasa lain yang setara nilainya.</li>
-      <li>Mendapatkan kupon potongan tambahan bagi kelompok kepanitiaan yang mengorder ulang proyek berikutnya.</li>
+      <li>Item di dalam paket bisa ditukar dengan jenis layanan eceran lain yang senilai harganya.</li>
+      <li>Diskon tambahan 10% untuk kelompok organisasi kepengurusan atau kepanitiaan kelas yang memesan berulang.</li>
     </ul>
   </div>
 </div>
@@ -651,7 +634,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="sec-header">
     <div class="sec-eyebrow">Alur Pemesanan</div>
     <h2 class="sec-title">Cara <em>Order</em></h2>
-    <p class="sec-sub">Proses birokrasi pemesanan praktis dan aman — terstruktur dari awal konsultasi hingga serah terima berkas.</p>
+    <p class="sec-sub">Proses order ringkas tanpa ribet — terstruktur aman dari konsultasi draf hingga serah terima berkas asli.</p>
   </div>
 
   <div class="order-steps" style="margin-bottom:28px;">
@@ -659,59 +642,59 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
       <div class="os-num">1</div>
       <div class="os-body">
         <div class="os-title">Hubungi kami via DM Instagram atau WhatsApp</div>
-        <div class="os-desc">Kirim pesan ke Instagram <span style="color:var(--gd); font-weight:500;">@akarproject.eo</span> atau kontak langsung WhatsApp ke nomor <span style="color:var(--gd); font-weight:500;">087886984983</span>. Infokan jenis tugas/jasa dan batas waktu pengumpulanmu.</div>
+        <div class="os-desc">Kirim pesan langsung ke akun Instagram resmi <span style="color:var(--gd); font-weight:500;">@akarproject.eo</span> atau meluncur lewat obrolan WhatsApp ke nomor <span style="color:var(--gd); font-weight:500;">087886984983</span>. Sertakan rincian instruksi tugas dan info batas harinya.</div>
       </div>
     </div>
     <div class="os-item">
       <div class="os-num">2</div>
       <div class="os-body">
         <div class="os-title">Konsultasi & briefing (GRATIS)</div>
-        <div class="os-desc">Tim ahli kami akan memeriksa parameter instruksi tugas atau rancangan visualmu dalam 1x24 jam untuk menyamakan ekspektasi hasil akhir. Sesi ini sepenuhnya gratis tanpa biaya tersembunyi.</div>
+        <div class="os-desc">Tim kami memetakan tingkat kesulitan tugas atau konsep visual yang kamu mau biar hasilnya pas dengan panduan dosen/guru. Sesi konsultasi awal ini 100% gratis.</div>
       </div>
     </div>
     <div class="os-item">
       <div class="os-num">3</div>
       <div class="os-body">
-        <div class="os-title">Konfirmasi harga & jadwal pengerjaan</div>
-        <div class="os-desc">Kami memberikan penawaran nominal harga final bersubsidi pelajar beserta estimasi waktu penyerahan draf. Setelah disepakati bersama, tarif dijamin mengunci dan tidak akan mendadak naik di tengah jalan.</div>
+        <div class="os-title">Konfirmasi harga hemat & jadwal pengerjaan</div>
+        <div class="os-desc">Kami hitung nominal tarif termurah sesuai budget pelajar aktif. Setelah sepakat, harga dijamin mengunci stabil—tidak akan mendadak berubah atau naik di tengah proses pengetikan.</div>
       </div>
     </div>
     <div class="os-item">
       <div class="os-num">4</div>
       <div class="os-body">
         <div class="os-title">Pembayaran DP 50%</div>
-        <div class="os-desc">Proses pengerjaan proyek pesanan resmi masuk ke antrean sistem kami setelah pembayaran uang muka (DP) senilai 50% divalidasi via transfer perbankan atau e-wallet (DANA/OVO/GoPay).</div>
+        <div class="os-desc">Pesananmu masuk antrean pengerjaan komputer setelah kamu melakukan transfer uang muka (DP) senilai 50% via perbankan resmi atau e-wallet (DANA/OVO/GoPay).</div>
       </div>
     </div>
     <div class="os-item">
       <div class="os-num">5</div>
       <div class="os-body">
         <div class="os-title">Proses pengerjaan & update berkala</div>
-        <div class="os-desc">Tim kami memproses pesanan secara teliti sesuai kesepakatan timeline. Untuk order berdurasi panjang, kami memberikan info perkembangan berkala secara proaktif.</div>
+        <div class="os-desc">Pekerjaan digarap teliti tepat waktu. Buat jenis order besar, kami rutin memberi update draf pengerjaan berkala biar kamu bisa pantau dengan tenang.</div>
       </div>
     </div>
     <div class="os-item">
       <div class="os-num">6</div>
       <div class="os-body">
         <div class="os-title">Preview & revisi</div>
-        <div class="os-desc">Kami mengirimkan draf berupa berkas contoh ber-watermark pelindung untuk diperiksa. Kamu bisa mengajukan revisi atau koreksi minor sesuai kesepakatan batas awal.</div>
+        <div class="os-desc">Berkas contoh hasil kerja dikirim dengan tanda pelindung watermark untuk kamu teliti ulang. Silakan ajukan koreksi minor jika ada poin yang kurang sreg di mata.</div>
       </div>
     </div>
     <div class="os-item">
       <div class="os-num">7</div>
       <div class="os-body">
         <div class="os-title">Pelunasan & file final dikirim</div>
-        <div class="os-desc">Setelah kamu puas dengan hasilnya, lakukan transfer pelunasan sisa 50%. Tim administrasi kami akan langsung mengirimkan dokumen berkas final resolusi penuh tanpa watermark saat itu juga. Selesai! 🌱</div>
+        <div class="os-desc">Begitu hasil revisi dirasa beres, lakukan pelunasan sisa 50%. File dokumen master resolusi tinggi asli (Word/PDF/PNG) langsung dikirim detik itu juga tanpa watermark. Beres! 🌱</div>
       </div>
     </div>
   </div>
 
   <div class="note-box">
-    <div class="nb-title">Estimasi Waktu Pengerjaan Umum</div>
+    <div class="nb-title">Estimasi Durasi Pengerjaan Kasual</div>
     <ul class="nb-list">
-      <li><strong>Makalah harian / rangkuman:</strong> 1–2 hari kerja kerja.</li>
-      <li><strong>Desain poster tunggal / video pendek:</strong> 1–2 hari kerja kerja.</li>
-      <li><strong>Karya Tulis Ilmiah (KTI) / Proposal:</strong> 3–5 hari kerja (tergantung tingkat kedalaman riset).</li>
+      <li><strong>Tugas harian ringkas & surat organisasi:</strong> Sekitar 1 hari kerja kerja.</li>
+      <li><strong>Desain flyer banner / editan video pendek:</strong> 1–2 hari kerja kerja.</li>
+      <li><strong>Berkas makalah komplit / LPJ Kepanitiaan:</strong> 2–4 hari kerja kerja (menurut kerumitan topik).</li>
     </ul>
   </div>
 </div>
@@ -721,46 +704,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
   <div class="sec-header">
     <div class="sec-eyebrow">Syarat & Ketentuan</div>
     <h2 class="sec-title">Kebijakan <em>Layanan</em></h2>
-    <p class="sec-sub">Regulasi kerja transparan demi menjaga kenyamanan transaksi, keamanan berkas, dan keadilan hak kedua belah pihak.</p>
+    <p class="sec-sub">Aturan main kerja yang adil dan transparan demi kenyamanan interaksi transaksi bersama.</p>
   </div>
 
   <div class="policy-grid" style="margin-bottom:20px;">
     <div class="policy-card">
-      <div class="pc-title">💳 Metode Pembayaran</div>
-      <div class="pc-body">Sistem pembayaran wajib melalui saluran divalidasi bank transfer (BRI/BCA) atau dompet digital terdaftar (GoPay, OVO, DANA). Bukti transfer mutasi wajib diunggah jernih ke admin.</div>
+      <div class="pc-title">💳 Validasi Transaksi</div>
+      <div class="pc-body">Sistem transfer menggunakan akun perbankan resmi atau kanal e-wallet terdaftar. Foto mutasi struk bukti transfer yang diunggah wajib terlihat jernih dan utuh tanpa potongan.</div>
     </div>
     <div class="policy-card">
-      <div class="pc-title">🔄 Pembatasan Regulasi Revisi</div>
-      <div class="pc-body">Mencakup perbaikan aspek minor (koreksi salah ketik data, perubahan warna aksen font, atau tata letak layout ringan). Perubahan konsep radikal di luar brief awal dikenakan tarif tambahan.</div>
+      <div class="pc-title">🔄 Hak Batasan Revisi</div>
+      <div class="pc-body">Ketentuan revisi mencakup koreksi minor seperti typo teks, perubahan warna, atau geser letak elemen visual. Permintaan rombak total tema baru di tengah jalan akan dikenakan tarif tambahan.</div>
     </div>
     <div class="policy-card">
-      <div class="pc-title">❌ Kebijakan Pembatalan Proyek</div>
-      <div class="pc-body">Pembatalan sepihak sebelum proses ketik berjalan: dana DP dikembalikan utuh 50%. Pembatalan sepihak saat pengerjaan di komputer sudah berjalan: uang muka otomatis hangus.</div>
+      <div class="pc-title">❌ Aturan Pembatalan</div>
+      <div class="pc-body">Jika pemesanan dibatalkan sepihak sebelum komputer mulai mengetik: uang muka DP dikembalikan penuh 50%. Jika dibatalkan saat pengerjaan sudah berjalan: uang muka DP dianggap hangus.</div>
     </div>
     <div class="policy-card">
-      <div class="pc-title">⏰ Proteksi Keterlambatan Kirim</div>
-      <div class="pc-body">Jika berkas draf terlambat dikirim melewati kesepakatan murni akibat kelalaian internal kami, pemesan berhak mendapatkan potongan kompensasi langsung 10% dari nilai total tarif.</div>
+      <div class="pc-title">⏰ Garansi Keterlambatan</div>
+      <div class="pc-body">Bila draf terlambat dikirim melewati tenggat waktu yang disepakati akibat kelalaian murni admin kami, pemesan berhak memperoleh potongan ganti rugi 10% dari total tagihan keseluruhan.</div>
     </div>
     <div class="policy-card">
-      <div class="pc-title">📁 Kepemilikan Hak Berkas</div>
-      <div class="pc-body">Aset digital seutuhnya beralih menjadi hak penuh pemesan setelah sisa pelunasan diselesaikan. Kami berhak memasukkannya ke galeri portofolio dengan menyamarkan identitas.</div>
+      <div class="pc-title">📁 Hak Cipta Dokumen</div>
+      <div class="pc-body">Kepemilikan arsip beralih penuh ke pemesan setelah sisa pelunasan lunas. Kami berhak memajangnya di lembar portofolio publik dengan menyamarkan semua data rahasia/sensitif.</div>
     </div>
     <div class="policy-card">
-      <div class="pc-title">🛡️ Jaminan Privasi Rahasia</div>
-      <div class="pc-body">Seluruh identitas diri pemesan, nama instansi lembaga sekolah, serta dokumen penunjang mentah dijamin aman, rahasia, dan tidak akan dibocorkan ke pihak luar mana pun.</div>
+      <div class="pc-title">🛡️ Proteksi Kerahasiaan</div>
+      <div class="pc-body">Nama asli pemesan, kontak pribadi, serta nama lembaga instansi sekolah dijamin aman terjaga penuh dalam database lokal kami. Tidak bakal dijual ke entitas luar.</div>
     </div>
   </div>
 
   <div class="note-box">
-    <div class="nb-title">Komitmen Etika Kerja Akar Project</div>
+    <div class="nb-title">Komitmen Integritas Akademik</div>
     <ul class="nb-list">
-      <li>Kami berkomitmen mendukung iklim edukasi etis—**tegas menolak** segala bentuk kecurangan ilegal seperti jual beli skripsi kelulusan akhir atau joki sistem ujian live.</li>
-      <li>Segala layanan pengerjaan bersifat bantuan pendukung belajar, bimbingan literatur, serta asistensi tata letak visual administrasi yang sah dan dapat dipertanggungjawabkan.</li>
+      <li>Akar Project mendukung iklim edukasi yang jujur—kami **tegas menolak** pengerjaan ilegal melanggar hukum seperti pengetikan joki skripsi tugas akhir mahasiswa tingkat akhir atau joki ujian live.</li>
+      <li>Seluruh jasa kami ditujukan sebagai media asistensi asistensi belajar, referensi literatur, panduan layout struktur, serta jasa pengetikan administrasi organisasi kasual yang legal.</li>
     </ul>
   </div>
 </div>
 
-<!-- CONTACT BAR (Terintegrasi ke nomor WA & Link IG yang valid) -->
+<!-- CONTACT BAR (Menuju nomor WA akhiran 83 & Akun IG yang akurat) -->
 <div class="contact-bar">
   <div class="cb-text">
     <div class="cbt-title">Siap mulai? Konsultasi dulu — gratis.</div>
