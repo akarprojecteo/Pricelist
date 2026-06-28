@@ -1,0 +1,1690 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akar Project — Layanan Kreatif & Akademik Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: oklch(0.28 0.08 165);
+  --forest-deep: oklch(0.22 0.09 165);
+  --emerald: oklch(0.58 0.14 165);
+  --emerald-bright: oklch(0.65 0.16 165);
+  --mint: oklch(0.82 0.09 165);
+  --mint-pale: oklch(0.92 0.04 165);
+  --mint-ghost: oklch(0.97 0.015 165);
+  
+  --ink: oklch(0.18 0.01 165);
+  --ink-medium: oklch(0.32 0.01 165);
+  --ink-soft: oklch(0.48 0.015 165);
+  --surface: oklch(0.99 0.002 165);
+  --surface-dim: oklch(0.96 0.005 165);
+  --border: oklch(0.86 0.01 165);
+  
+  --sans: 'Epilogue', -apple-system, system-ui, sans-serif;
+  --serif: 'Crimson Pro', 'Georgia', serif;
+  
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-bg: oklch(0.99 0.002 165 / 0.94);
+}
+
+[data-theme="dark"] {
+  --ink: #e8e8e6;
+  --ink-medium: #b0b0ac;
+  --ink-soft: #8a8a86;
+  --surface: #0d0d0c;
+  --surface-dim: #141412;
+  --border: #2a2a27;
+  --mint: #72d4b0;
+  --mint-pale: #2a6b52;
+  --mint-ghost: #14261f;
+  --emerald: #3dbd85;
+  --emerald-bright: #45d494;
+  --forest: #1a6b4e;
+  --forest-deep: #13543b;
+  --nav-bg: rgba(13, 13, 12, 0.94);
+  --serif: 'Crimson Pro', 'Georgia', serif;
+  --sans: 'Epilogue', -apple-system, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s var(--ease-smooth);
+}
+
+body { 
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface);
+  font-optical-sizing: auto;
+  transition: color 0.4s var(--ease-smooth), background-color 0.4s var(--ease-smooth);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    transition: none !important;
+  }
+}
+img { display: block; max-width: 100%; height: auto; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+::selection { background: var(--mint); color: var(--forest-deep); }
+:focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav-logo img {
+  height: 38px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  padding: 0.625rem 1.125rem;
+  border-radius: 10px;
+  transition: all 0.2s var(--ease-smooth);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--ink);
+  background: var(--mint-ghost);
+}
+
+.nav-link.active {
+  color: var(--forest);
+  background: var(--mint-pale);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink-soft);
+  transition: all 0.3s var(--ease-smooth);
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--mint-ghost);
+  color: var(--ink);
+}
+
+.theme-toggle svg {
+  position: absolute;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.moon-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+[data-theme="dark"] .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .hero-cta {
+  color: #0d0d0c;
+}
+
+[data-theme="dark"] .note-box {
+  background: #141412;
+  border-color: #2a2a27;
+}
+
+[data-theme="dark"] .service-row:hover {
+  background: #141412;
+}
+
+[data-theme="dark"] .policy-card:hover {
+  background: #141412;
+}
+
+[data-theme="dark"] .pkg-card.featured {
+  background: #14261f;
+}
+
+[data-theme="dark"] .cta-btn-secondary {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .hero-meta-value {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 100%);
+  overflow: hidden;
+  padding: 8rem clamp(1.5rem, 5vw, 4rem) 5rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.65 0.16 165 / 0.12) 0%, transparent 70%);
+  top: -250px;
+  right: -150px;
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.82 0.09 165 / 0.06) 0%, transparent 70%);
+  bottom: -150px;
+  left: -100px;
+  pointer-events: none;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.05); }
+}
+
+.hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--mint);
+  border: 1px solid oklch(0.82 0.09 165 / 0.25);
+  padding: 0.5rem 1.125rem;
+  border-radius: 100px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-smooth) 0.2s forwards;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: oklch(1 0 0);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-smooth) 0.4s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--mint);
+}
+
+.hero-desc {
+  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+  line-height: 1.65;
+  color: oklch(1 0 0 / 0.7);
+  max-width: 600px;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-smooth) 0.6s forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--forest-deep);
+  background: oklch(1 0 0);
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-smooth);
+  text-decoration: none;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-smooth) 0.8s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px oklch(0 0 0 / 0.2);
+}
+
+.hero-cta::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.hero-cta:active::after {
+  width: 200%;
+  height: 200%;
+  opacity: 1;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid oklch(1 0 0 / 0.12);
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-smooth) 1s forwards;
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.hero-meta-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.hero-meta-value {
+  font-size: 14px;
+  color: oklch(1 0 0 / 0.75);
+  line-height: 1.5;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+.section {
+  padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 5vw, 4rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: clamp(3.5rem, 8vw, 6rem);
+  max-width: 760px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-label {
+
+.section-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--emerald);
+}
+
+.section-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 640px;
+}
+
+.service-cat {
+  margin-bottom: 5rem;
+}
+
+.service-cat:last-child {
+  margin-bottom: 0;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cat-name {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.cat-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  background: var(--mint-pale);
+  color: var(--emerald);
+}
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--emerald);
+}
+
+.section-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 640px;
+}
+
+.service-cat {
+  margin-bottom: 5rem;
+}
+
+.service-cat:last-child {
+  margin-bottom: 0;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cat-name {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.cat-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  background: var(--mint-pale);
+  color: var(--emerald);
+}
+
+.service-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1.5fr 1.5fr;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  transition: all 0.3s var(--ease-smooth);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.service-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-row:hover {
+  background: var(--mint-ghost);
+  margin: 0 -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  transform: translateX(8px);
+}
+
+.service-row:last-child {
+  border-bottom: none;
+}
+
+.service-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+}
+
+.service-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.service-includes {
+  font-size: 13px;
+  color: var(--ink-medium);
+  line-height: 1.6;
+}
+
+.service-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: var(--mint-pale);
+  color: var(--emerald);
+  margin-top: 0.375rem;
+  letter-spacing: 0.02em;
+}
+
+.service-price {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--forest);
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.note-box {
+  background: var(--mint-ghost);
+  border: 1px solid var(--mint-pale);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.note-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 1rem;
+}
+
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.note-list li {
+  font-size: 14px;
+  color: var(--ink-medium);
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.65;
+}
+
+.note-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--emerald);
+  font-weight: 600;
+}
+
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.pkg-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.3s var(--ease-smooth);
+  will-change: transform;
+}
+
+.pkg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px oklch(0.28 0.08 165 / 0.08);
+  border-color: var(--emerald);
+}
+
+.pkg-card.featured {
+  border: 2px solid var(--emerald);
+  background: var(--mint-ghost);
+}
+
+.pkg-rec {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--emerald);
+  color: var(--surface);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+}
+
+.pkg-cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 0.5rem;
+}
+
+.pkg-name {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.pkg-price {
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pkg-price span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.pkg-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pkg-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--ink-medium);
+  line-height: 1.6;
+}
+
+.pkg-item::before {
+  content: '✓';
+  color: var(--emerald);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.order-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 3rem;
+}
+
+.order-step {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s var(--ease-smooth);
+}
+
+.order-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.order-step:last-child {
+  border-bottom: none;
+}
+
+.step-num {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.order-step:hover .step-num {
+  background: var(--emerald);
+  transform: scale(1.08);
+}
+
+.step-content {
+  padding-top: 0.25rem;
+}
+
+.step-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.step-desc {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.step-desc strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.policy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: all 0.3s var(--ease-smooth);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.policy-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.policy-card:hover {
+  border-color: var(--emerald);
+  background: var(--mint-ghost);
+}
+
+.policy-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.policy-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 100%);
+  border-radius: 16px;
+  padding: clamp(3rem, 6vw, 4rem);
+  margin: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.82 0.09 165 / 0.1) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.cta-title {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: oklch(1 0 0);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.cta-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: oklch(1 0 0 / 0.7);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-smooth);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.cta-btn:active::after {
+  width: 200%;
+  height: 200%;
+  opacity: 1;
+}
+
+.cta-btn-primary {
+  background: oklch(1 0 0);
+  color: var(--forest-deep);
+}
+
+.cta-btn-primary::after {
+  background: rgba(8, 80, 65, 0.2);
+}
+
+.cta-btn-secondary::after {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px oklch(0 0 0 / 0.2);
+}
+
+.cta-btn-secondary {
+  background: transparent;
+  color: oklch(1 0 0);
+  border: 1px solid oklch(1 0 0 / 0.3);
+}
+
+.cta-btn-secondary:hover {
+  background: oklch(1 0 0 / 0.1);
+  border-color: oklch(1 0 0 / 0.5);
+}
+
+@media (max-width: 900px) {
+  .service-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .service-price {
+    text-align: left;
+  }
+  
+  .nav-inner {
+    height: 64px;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 16px oklch(0 0 0 / 0.08);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s var(--ease-smooth);
+    pointer-events: none;
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+  
+  .order-step {
+    grid-template-columns: 3rem 1fr;
+    gap: 1.25rem;
+  }
+  
+  .step-num {
+    width: 3rem;
+    height: 3rem;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pkg-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .policy-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-meta {
+    gap: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--emerald);
+  color: var(--surface);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 200;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="3.png" alt="Akar Project" width="120" height="38">
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 2v2M10 16v2M18 10h-2M4 10H2M15.66 4.34l-1.41 1.41M5.75 14.25l-1.41 1.41M15.66 15.66l-1.41-1.41M5.75 5.75L4.34 4.34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M17 10.5A7 7 0 1 1 9.5 3a6 6 0 0 0 7.5 7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="nav-links">
+      <a href="#layanan" class="nav-link active">Layanan</a>
+      <a href="#paket" class="nav-link">Paket</a>
+      <a href="#cara" class="nav-link">Cara Order</a>
+      <a href="#kebijakan" class="nav-link">Kebijakan</a>
+    </div>
+  </div>
+</nav>
+
+<header role="banner">
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Subsidi Khusus Pelajar 2026</div>
+    <h1 class="hero-title">Layanan Kreatif<br>untuk <em>Generasi Ambisius</em></h1>
+    <p class="hero-desc">Bantuan akademik, desain, dan administrasi dengan kualitas premium. Harga yang masuk akal untuk mahasiswa dan pelajar yang serius dengan karya mereka.</p>
+    <a href="#layanan" class="hero-cta">
+      <span>Lihat Layanan</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 3L8 13M8 13L13 8M8 13L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Berlaku</div>
+        <div class="hero-meta-value">2026 · Tarif Subsidi Pelajar</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Kontak</div>
+        <div class="hero-meta-value">@akarproject.eo · 087886984983</div>
+      </div>
+    </div>
+  </div>
+</section>
+</header>
+
+<main id="main" role="main">
+
+<section id="layanan" class="section">
+  <div class="section-header">
+    <div class="section-label">Layanan</div>
+    <h2 class="section-title">Semua yang Kami <em>Tawarkan</em></h2>
+    <p class="section-desc">Dari tugas harian hingga proyek besar. Setiap layanan dirancang untuk membantu pelajar menyelesaikan pekerjaan berkualitas tanpa menguras anggaran.</p>
+  </div>
+
+  <div class="service-cat">
+    <div class="cat-header">
+      <h3 class="cat-name">Akademik & Edukasi</h3>
+      <span class="cat-badge">Populer</span>
+    </div>
+    <div class="service-grid">
+        <div class="service-row">
+          <div class="service-name">Bantu Tugas Harian Kilat</div>
+          <div class="service-desc">Tugas harian ringan seperti menjawab 1-3 soal esai pendek, isian singkat, atau rangkuman 1 halaman.</div>
+          <div class="service-includes">Pengerjaan kilat</div>
+          <div class="service-price">Rp 5.000&ndash;15.000</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Rangkuman Materi per Bab</div>
+          <div class="service-desc">Rangkuman poin inti dari buku cetak, file PDF, atau presentasi PPT kuliah disusun rapi agar mudah dihapal.</div>
+          <div class="service-includes">Format Word/PDF</div>
+          <div class="service-price">Rp 10.000&ndash;20.000</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Makalah Standar</div>
+          <div class="service-desc">Pembuatan makalah tugas sekolah atau kuliah (8&ndash;15 halaman). Struktur rapi dan referensi valid.</div>
+          <div class="service-includes">1x revisi<span class="service-tag">Daftar pustaka</span></div>
+          <div class="service-price">Rp 25.000&ndash;45.000</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Makalah Panjang / Ilmiah</div>
+          <div class="service-desc">Kajian tugas mendalam (15&ndash;30 halaman) dengan struktur metodologi yang lebih ketat.</div>
+          <div class="service-includes">2x revisi<span class="service-tag">Abstrak</span></div>
+          <div class="service-price">Rp 50.000&ndash;85.000</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">KTI (Karya Tulis Ilmiah)</div>
+          <div class="service-desc">Rancangan komplit KTI untuk keperluan lomba formal, mulai dari bab latar belakang hingga penutup.</div>
+          <div class="service-includes">2x revisi</div>
+          <div class="service-price">Rp 75.000&ndash;120.000</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Latihan Soal + Pembahasan</div>
+          <div class="service-desc">Penyusunan paket soal latihan berkisar 10&ndash;25 butir lengkap dengan cara penyelesaian/kunci jawaban.</div>
+          <div class="service-includes">Review materi</div>
+          <div class="service-price">Rp 15.000&ndash;30.000</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Mentoring / Bimbel Online</div>
+          <div class="service-desc">Sesi belajar privat tanya jawab interaktif bareng tim kami via Google Meet atau WhatsApp Room.</div>
+          <div class="service-includes">60&ndash;90 menit</div>
+          <div class="service-price">Rp 20.000&ndash;40.000 / sesi</div>
+        </div>
+    </div>
+  </div>
+
+  <div class="service-cat">
+    <div class="cat-header">
+      <h3 class="cat-name">Desain & Konten Digital</h3>
+      <span class="cat-badge">Populer</span>
+    </div>
+    <div class="service-grid">
+      <div class="service-row">
+        <div class="service-name">Edit File / Crop / Aset Mikro</div>
+        <div class="service-desc">Jasa edit gambar mikro seperti ganti background pasfoto, potong elemen stiker, atau perbaikan teks poster.</div>
+        <div class="service-includes">Proses cepat</div>
+        <div class="service-price">Rp 5.000 / aset</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Desain Poster / Flyer Tugas</div>
+        <div class="service-desc">Media visual kreatif untuk infografis penunjang presentasi tugas kelompok atau publikasi pamflet event.</div>
+        <div class="service-includes">1x revisi<span class="service-tag">File PNG</span></div>
+        <div class="service-price">Rp 15.000&ndash;30.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Edit Video Reels / TikTok Short</div>
+        <div class="service-desc">Jahit potongan video mentah durasi di bawah 60 detik di CapCut. Termasuk pasang transisi, subtitle, & musik tren.</div>
+        <div class="service-includes">1x revisi</div>
+        <div class="service-price">Rp 15.000&ndash;35.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Desain Feed Instagram (3 post)</div>
+        <div class="service-desc">Paket feeds isi 3 baris desain berkesinambungan dengan satu tone tema visual estetik.</div>
+        <div class="service-includes">Akses Canva link</div>
+        <div class="service-price">Rp 40.000&ndash;70.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Template Medsos Organisasi</div>
+        <div class="service-desc">Pembuatan 5 layout bingkai kosong siap edit ulang untuk kebutuhan info proker berkala pengurus.</div>
+        <div class="service-includes">Editable Canva</div>
+        <div class="service-price">Rp 50.000&ndash;85.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Edit Video Panjang (1&ndash;5 menit)</div>
+        <div class="service-desc">Editing kompilasi klip dokumentasi liburan, vlog kelas, atau bumper video perkenalan kelompok.</div>
+        <div class="service-includes">Free teks + musik</div>
+        <div class="service-price">Rp 35.000&ndash;65.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Mockup Produk / Digital Drawing</div>
+        <div class="service-desc">Visualisasi penempelan stiker label jualan di botol atau pembuatan aset ilustrasi karakter kasual.</div>
+        <div class="service-includes">High-Res PNG</div>
+        <div class="service-price">Rp 25.000&ndash;50.000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-cat">
+    <div class="cat-header">
+      <h3 class="cat-name">Dokumen & Administrasi</h3>
+      <span class="cat-badge">Eceran</span>
+    </div>
+    <div class="service-grid">
+      <div class="service-row">
+        <div class="service-name">Surat Resmi / Undangan Panitia</div>
+        <div class="service-desc">Ketik template format surat peminjaman alat, surat izin kegiatan, atau undangan pemateri per surat.</div>
+        <div class="service-includes">Siap cetak</div>
+        <div class="service-price">Rp 5.000&ndash;10.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Notulensi Hasil Rapat</div>
+        <div class="service-desc">Merapikan rekaman suara rapat kepanitiaan atau coretan berantakan menjadi poin kesimpulan resmi.</div>
+        <div class="service-includes">Per sesi rapat</div>
+        <div class="service-price">Rp 10.000&ndash;20.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Laporan Pertanggungjawaban (LPJ)</div>
+        <div class="service-desc">Penyusunan berkas laporan tertulis pasca kegiatan kepanitiaan selesai dalam format rapi.</div>
+        <div class="service-includes">Format Word/PDF</div>
+        <div class="service-price">Rp 20.000&ndash;40.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Proposal Kegiatan Acara</div>
+        <div class="service-desc">Pembuatan naskah proposal pengajuan dana sponsor lengkap dengan rincian tabel anggaran biaya.</div>
+        <div class="service-includes">1x revisi</div>
+        <div class="service-price">Rp 25.000&ndash;50.000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-cat">
+    <div class="cat-header">
+      <h3 class="cat-name">Konsep & Koordinasi Acara</h3>
+      <span class="cat-badge">Pendukung</span>
+    </div>
+    <div class="service-grid">
+      <div class="service-row">
+        <div class="service-name">Rundown Acara Detail</div>
+        <div class="service-desc">Matriks susunan waktu per menit hari-H, alur masuk pengisi acara, dan pembagian jobdesk kerja panitia.</div>
+        <div class="service-includes">Matriks detail</div>
+        <div class="service-price">Rp 30.000&ndash;50.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Konsep Tema + Moodboard</div>
+        <div class="service-desc">Sumbang ide penentuan tema besar, arahan dresscode kostum, hiasan dekorasi, dan moodboard visual.</div>
+        <div class="service-includes">Slide konsep</div>
+        <div class="service-price">Rp 45.000&ndash;80.000</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Koordinasi Acara Ringan</div>
+        <div class="service-desc">Paket lengkap gabungan pembuatan Konsep Acara + Susunan Rundown + 1 Desain Poster promosi.</div>
+        <div class="service-includes">Paket Lengkap</div>
+        <div class="service-price">Rp 99.000&ndash;199.000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="note-title">Catatan Penting Harga</div>
+    <ul class="note-list">
+      <li>Semua harga bersubsidi khusus pelajar, tarif final mengunci setelah tim kami memahami lembar panduan tugasmu.</li>
+      <li>Pemesanan dengan tenggat kilat (kurang dari 24 jam) akan disesuaikan secara transparan di awal chat.</li>
+      <li>Sistem pembayaran aman: DP 50% sebagai tanda jadi mulai ketik, sisa 50% dibayar setelah draf preview disetujui.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="paket" class="section">
+  <div class="section-header">
+    <div class="section-label">Paket</div>
+    <h2 class="section-title">Paket <em>Bundling</em></h2>
+    <p class="section-desc">Beli borongan jauh lebih hemat. Solusi cerdas biar dapet banyak tugas beres tanpa menguras sisa uang saku.</p>
+  </div>
+
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-cat">Paket Tugas Mikro</div>
+      <div class="pkg-name">Paket Tugas Kilat</div>
+      <div class="pkg-price">Rp 20.000 <span>/ paket</span></div>
+      <ul class="pkg-items">
+        <li class="pkg-item">1 Bantu Tugas Harian Ringan</li>
+        <li class="pkg-item">1 Rangkuman Materi (1 Bab/PPT)</li>
+        <li class="pkg-item">1x revisi minor gratis</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="pkg-rec">Paling Laris</div>
+      <div class="pkg-cat">Paket Sekolah / Kuliah</div>
+      <div class="pkg-name">Paket Belajar Tuntas</div>
+      <div class="pkg-price">Rp 45.000 <span>/ paket</span></div>
+      <ul class="pkg-items">
+        <li class="pkg-item">1 Makalah standar (8&ndash;15 halaman)</li>
+        <li class="pkg-item">1 Rangkuman materi ringkas</li>
+        <li class="pkg-item">1 Set latihan soal + pembahasan</li>
+        <li class="pkg-item">Hak revisi draf makalah</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-cat">Paket Mahasiswa Pro</div>
+      <div class="pkg-name">Paket Akademik Pro</div>
+      <div class="pkg-price">Rp 69.000 <span>/ paket</span></div>
+      <ul class="pkg-items">
+        <li class="pkg-item">1 Makalah ilmiah panjang (15-25 hal)</li>
+        <li class="pkg-item">1 Bundel ringkasan materi lengkap</li>
+        <li class="pkg-item">1 Sesi tanya jawab mentoring (45 menit)</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-cat">Paket Kepanitiaan</div>
+      <div class="pkg-name">Paket Acara Starter</div>
+      <div class="pkg-price">Rp 40.000 <span>/ paket</span></div>
+      <ul class="pkg-items">
+        <li class="pkg-item">1 File Surat Undangan Kepanitiaan</li>
+        <li class="pkg-item">1 Desain Poster Publikasi Utama</li>
+        <li class="pkg-item">File mentahan desain + 1x revisi</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-cat">Paket Konten Sosial</div>
+      <div class="pkg-name">Paket Media Starter</div>
+      <div class="pkg-price">Rp 75.000 <span>/ paket</span></div>
+      <ul class="pkg-items">
+        <li class="pkg-item">5 Template desain feeds Canva link</li>
+        <li class="pkg-item">1 Materi editan video pendek tiktok/reels</li>
+        <li class="pkg-item">Naskah caption teks siap pakai</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-cat">Paket Organisasi Event</div>
+      <div class="pkg-name">Paket Event Lengkap</div>
+      <div class="pkg-price">Rp 149.000 <span>/ event</span></div>
+      <ul class="pkg-items">
+        <li class="pkg-item">Konsep Ide Kreatif & Tema Utama</li>
+        <li class="pkg-item">Susunan Rundown teknis per menit</li>
+        <li class="pkg-item">1 Desain poster utama + berkas proposal</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="note-title">Catatan Paket Bundling</div>
+    <ul class="note-list">
+      <li>Item di dalam paket bisa ditukar dengan jenis layanan eceran lain yang senilai harganya.</li>
+      <li>Diskon tambahan 10% untuk kelompok organisasi kepengurusan atau kepanitiaan kelas yang memesan berulang.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="cara" class="section">
+  <div class="section-header">
+    <div class="section-label">Cara Order</div>
+    <h2 class="section-title">Cara <em>Order</em></h2>
+    <p class="section-desc">Proses order ringkas tanpa ribet, terstruktur aman dari konsultasi draf hingga serah terima berkas asli.</p>
+  </div>
+
+  <div class="order-steps">
+    <div class="order-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Hubungi kami via DM Instagram atau WhatsApp</div>
+        <div class="step-desc">Kirim pesan langsung ke akun Instagram resmi <strong>@akarproject.eo</strong> atau meluncur lewat obrolan WhatsApp ke nomor <strong>087886984983</strong>. Sertakan rincian instruksi tugas dan info batas harinya.</div>
+      </div>
+    </div>
+    <div class="order-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Konsultasi & briefing (GRATIS)</div>
+        <div class="step-desc">Tim kami memetakan tingkat kesulitan tugas atau konsep visual yang kamu mau biar hasilnya pas dengan panduan dosen/guru. Sesi konsultasi awal ini 100% gratis.</div>
+      </div>
+    </div>
+    <div class="order-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Konfirmasi harga hemat & jadwal pengerjaan</div>
+        <div class="step-desc">Kami hitung nominal tarif termurah sesuai budget pelajar aktif. Setelah sepakat, harga dijamin mengunci stabil, tidak akan mendadak berubah atau naik di tengah proses pengetikan.</div>
+      </div>
+    </div>
+    <div class="order-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Pembayaran DP 50%</div>
+        <div class="step-desc">Pesananmu masuk antrean pengerjaan komputer setelah kamu melakukan transfer uang muka (DP) senilai 50% via perbankan resmi atau e-wallet (DANA/OVO/GoPay).</div>
+      </div>
+    </div>
+    <div class="order-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Proses pengerjaan & update berkala</div>
+        <div class="step-desc">Pekerjaan digarap teliti tepat waktu. Buat jenis order besar, kami rutin memberi update draf pengerjaan berkala biar kamu bisa pantau dengan tenang.</div>
+      </div>
+    </div>
+    <div class="order-step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <div class="step-title">Preview & revisi</div>
+        <div class="step-desc">Berkas contoh hasil kerja dikirim dengan tanda pelindung watermark untuk kamu teliti ulang. Silakan ajukan koreksi minor jika ada poin yang kurang sreg di mata.</div>
+      </div>
+    </div>
+    <div class="order-step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <div class="step-title">Pelunasan & file final dikirim</div>
+        <div class="step-desc">Begitu hasil revisi dirasa beres, lakukan pelunasan sisa 50%. File dokumen master resolusi tinggi asli (Word/PDF/PNG) langsung dikirim detik itu juga tanpa watermark. Beres!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="note-title">Estimasi Durasi Pengerjaan Kasual</div>
+    <ul class="note-list">
+      <li><strong>Tugas harian ringkas & surat organisasi:</strong> Sekitar 1 hari kerja.</li>
+      <li><strong>Desain flyer banner / editan video pendek:</strong> 1&ndash;2 hari kerja.</li>
+      <li><strong>Berkas makalah komplit / LPJ Kepanitiaan:</strong> 2&ndash;4 hari kerja (menurut kerumitan topik).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="kebijakan" class="section">
+  <div class="section-header">
+    <div class="section-label">Kebijakan</div>
+    <h2 class="section-title">Kebijakan <em>Layanan</em></h2>
+    <p class="section-desc">Aturan main kerja yang adil dan transparan demi kenyamanan interaksi transaksi bersama.</p>
+  </div>
+
+  <div class="policy-grid">
+    <div class="policy-card">
+      <div class="policy-title">Validasi Transaksi</div>
+      <div class="policy-desc">Sistem transfer menggunakan akun perbankan resmi atau kanal e-wallet terdaftar. Foto mutasi struk bukti transfer yang diunggah wajib terlihat jernih dan utuh tanpa potongan.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-title">Hak Batasan Revisi</div>
+      <div class="policy-desc">Ketentuan revisi mencakup koreksi minor seperti typo teks, perubahan warna, atau geser letak elemen visual. Permintaan rombak total tema baru di tengah jalan akan dikenakan tarif tambahan.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-title">Aturan Pembatalan</div>
+      <div class="policy-desc">Jika pemesanan dibatalkan sepihak sebelum komputer mulai mengetik: uang muka DP dikembalikan penuh 50%. Jika dibatalkan saat pengerjaan sudah berjalan: uang muka DP dianggap hangus.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-title">Garansi Keterlambatan</div>
+      <div class="policy-desc">Bila draf terlambat dikirim melewati tenggat waktu yang disepakati akibat kelalaian murni admin kami, pemesan berhak memperoleh potongan ganti rugi 10% dari total tagihan keseluruhan.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-title">Hak Cipta Dokumen</div>
+      <div class="policy-desc">Kepemilikan arsip beralih penuh ke pemesan setelah sisa pelunasan lunas. Kami berhak memajangnya di lembar portofolio publik dengan menyamarkan semua data rahasia/sensitif.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-title">Proteksi Kerahasiaan</div>
+      <div class="policy-desc">Nama asli pemesan, kontak pribadi, serta nama lembaga instansi sekolah dijamin aman terjaga penuh dalam database lokal kami. Tidak bakal dijual ke entitas luar.</div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="note-title">Komitmen Integritas Akademik</div>
+    <ul class="note-list">
+      <li>Akar Project mendukung iklim edukasi yang jujur, kami <strong>tegas menolak</strong> pengerjaan ilegal melanggar hukum seperti pengetikan joki skripsi tugas akhir mahasiswa tingkat akhir atau joki ujian live.</li>
+      <li>Seluruh jasa kami ditujukan sebagai media asistensi belajar, referensi literatur, panduan layout struktur, serta jasa pengetikan administrasi organisasi kasual yang legal.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+<div class="cta-section">
+  <div class="cta-title">Siap mulai — Konsultasi dulu, gratis.</div>
+  <div class="cta-desc">Kirim pesan langsung ke DM Instagram @akarproject.eo atau hubungi via WhatsApp Chat.</div>
+  <div class="cta-buttons">
+    <a href="https://www.instagram.com/akarproject.eo/" target="_blank" rel="noopener" class="cta-btn cta-btn-secondary">Instagram</a>
+    <a href="https://wa.me/6287886984983" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">WhatsApp Chat</a>
+  </div>
+</div>
+</footer>
+
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navLinkItems = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section[id]');
+
+navToggle.addEventListener('click', () => {
+  const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !isExpanded);
+  navToggle.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+navLinkItems.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    
+    if (targetSection) {
+      const navHeight = document.querySelector('.nav').offsetHeight;
+      const targetPosition = targetSection.offsetTop - navHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+      
+      navLinkItems.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      
+      if (window.innerWidth <= 900) {
+        navLinks.classList.remove('active');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+});
+
+const observerOptions = {
+  root: null,
+  rootMargin: '-20% 0px -35% 0px',
+  threshold: 0
+};
+
+const observerCallback = (entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinkItems.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
+
+const serviceRows = document.querySelectorAll('.service-row');
+const pkgCards = document.querySelectorAll('.pkg-card');
+
+const rowObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 50);
+      rowObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+serviceRows.forEach(row => rowObserver.observe(row));
+pkgCards.forEach(card => rowObserver.observe(card));
+
+const policyCards = document.querySelectorAll('.policy-card');
+policyCards.forEach(card => rowObserver.observe(card));
+
+const orderSteps = document.querySelectorAll('.order-step');
+orderSteps.forEach(step => rowObserver.observe(step));
+
+const themeToggle = document.querySelector('.theme-toggle');
+const html = document.documentElement;
+
+const getPreferredTheme = () => {
+  const stored = localStorage.getItem('theme');
+  if (stored) return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const setTheme = (theme) => {
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+};
+
+setTheme(getPreferredTheme());
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme') || 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    setTheme(e.matches ? 'dark' : 'light');
+  }
+});
+</script>
+
+</body>
+</html>
